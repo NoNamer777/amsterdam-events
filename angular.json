@@ -112,17 +112,21 @@
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
-            "fileReplacements": [
-              {
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.test.ts"
-              }
-            ],
             "codeCoverage": true,
             "codeCoverageExclude": [
               "src/app/models/**/*",
               "src/environments/**/*"
             ]
+          },
+          "configurations": {
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.test.ts"
+                }
+              ]
+            }
           },
           "defaultConfiguration": "test"
         }
