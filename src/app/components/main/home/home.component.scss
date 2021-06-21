@@ -2,11 +2,12 @@
 
   #middle-column {
 
-    ul {
+    .d-flex {
 
-      li {
-        list-style: none;
-        display: inline-block;
+      a {
+        flex: 25%;
+        max-width: 30%;
+        margin: 0 1em 1em 0;
       }
     }
   }
