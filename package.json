@@ -2,13 +2,11 @@
   "name": "amsterdam-events",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "local": "ng serve",
-    "remote": "ng serve --host=192.168.178.143",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start:local": "ng serve --configuration=dev",
+    "start:remote": "ng serve --configuration=dev --host=192.168.178.94",
+    "test:dev": "ng test --watch=true --browsers=Chrome",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCI",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
@@ -20,9 +18,8 @@
     "@angular/platform-browser": "~12.0.5",
     "@angular/platform-browser-dynamic": "~12.0.5",
     "@angular/router": "~12.0.5",
-    "@popperjs/core": "^2.6.0",
-    "bootstrap": "^4.5.3",
-    "jquery": "^3.5.1",
+    "@popperjs/core": "^2.9.2",
+    "bootstrap": "^5.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
