@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @mixin width-percentage($width) {
-
   .w-#{$width} {
     width: $width * 1%;
   }
