@@ -37,7 +37,7 @@
             ]
           },
           "configurations": {
-            "prod": {
+            "production": {
               "budgets": [
                 {
                   "type": "initial",
@@ -57,35 +57,18 @@
                 }
               ],
               "outputHashing": "all"
-            },
-            "dev": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.dev.ts"
-                }
-              ]
             }
           },
-          "defaultConfiguration": "prod"
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "amsterdam-events:build:prod"
-            },
-            "dev": {
-              "browserTarget": "amsterdam-events:build:dev"
+              "browserTarget": "amsterdam-events:build:production"
             }
           },
-          "defaultConfiguration": "dev"
+          "defaultConfiguration": "production"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
