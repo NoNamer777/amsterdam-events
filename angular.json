@@ -110,14 +110,17 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.test.ts"
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": ["src/**/*.html", "src/**/*.ts"]
+                    }
                 }
-              ]
             }
-          },
-          "defaultConfiguration": "test"
         }
-      }
+    },
+    "defaultProject": "amsterdam-events",
+    "cli": {
+        "defaultCollection": "@angular-eslint/schematics"
     }
-  },
-  "defaultProject": "amsterdam-events"
 }
