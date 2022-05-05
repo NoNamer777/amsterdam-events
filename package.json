@@ -2,10 +2,11 @@
   "name": "amsterdam-events",
   "version": "0.0.0",
   "scripts": {
-    "test:dev": "ng test --watch=true --browsers=Chrome",
-    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCI",
     "start:local": "ng serve",
     "start:remote": "ng serve --host=0.0.0.0",
+    "test": "ng test --watch=false",
+    "test:dev": "ng test --watch=true --browsers=ChromeHeadless",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCI"
   },
   "private": true,
   "dependencies": {
