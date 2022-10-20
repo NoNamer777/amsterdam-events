@@ -112,6 +112,7 @@
     },
     "defaultProject": "amsterdam-events",
     "cli": {
+      "analytics": false,
         "defaultCollection": "@angular-eslint/schematics"
     }
 }
