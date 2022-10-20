@@ -11,7 +11,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let event of events; let id = index">
+                        <tr
+                            *ngFor="let event of events; let id = index"
+                            (click)="onSelectEvent(event)"
+                            [class.table-primary]="isEventSelected(event)"
+                        >
                             <th scope="row">{{ id }}</th>
                             <td>{{ event.title }}</td>
                         </tr>
@@ -25,10 +29,5 @@
         <div class="col"></div>
     </div>
 </div>
-
-<!--TODO - With help from Angular, use a for loop in the template (so within this file) to loop over the available events -->
-<!-- to create html for those events. -->
-
-<!--TODO - For such an event implement, with help from Angular, implement the click listener in the component. -->
 
 <!--TODO - As suggested in the task, use the ngif Angular syntax to show the detail2 template or an alternative message. -->
