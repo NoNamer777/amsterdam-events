@@ -1,8 +1,30 @@
-<p>overview2 works!</p>
-
-<!--TODO - Create a similar overview as shown in the product document at chapter 3.2.2 part A. You can leave out the `Add event` button for now -->
-
-<!--TODO - Make sure, by using bootstrap classes, that the overview part takes roughly 1/6 or 3/12 of the whole available width. -->
+<div class="container-fluid">
+    <div class="row align-items-start">
+        <div class="col">
+            <div class="table-responsive">
+                <h3>Overview of all events:</h3>
+                <table class="table table-hover table-striped align-middle">
+                    <thead>
+                        <tr class="table-info">
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let event of events; let id = index">
+                            <th scope="row">{{ id }}</th>
+                            <td>{{ event.title }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <p>Select an event in the panel on the left.</p>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
 
 <!--TODO - With help from Angular, use a for loop in the template (so within this file) to loop over the available events -->
 <!-- to create html for those events. -->
