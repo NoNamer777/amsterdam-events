@@ -12,6 +12,8 @@ describe('Overview1Component', () => {
     });
 
     beforeEach(() => {
+        spyOn(console, 'log').and.callFake(() => ({}));
+
         fixture = TestBed.createComponent(Overview1Component);
         component = fixture.componentInstance;
         fixture.detectChanges();
