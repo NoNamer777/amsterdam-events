@@ -1,75 +1,76 @@
 <!--Todo - Add an entry to the `My events` dropdown to be able to navigate to the overview 2. -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Amsterdam Events</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="btn btn-primary me-1 mb-1" href="#">Home</a>
-        </li>
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle me-1 mb-1"
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Amsterdam Events</a>
+        <button
+            class="navbar-toggler"
             type="button"
-            id="dropdownEvents"
-            data-bs-toggle="dropdown"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
             aria-expanded="false"
-          >
-            My Events
-          </button>
-          <div class="dropdown-menu mb-1" aria-labelledby="dropdownEvents">
-            <a class="dropdown-item" href="#">Item 1</a>
-            <a class="dropdown-item" href="#">Item 2</a>
-          </div>
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="btn btn-primary me-1 mb-1" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button
+                            class="btn btn-secondary dropdown-toggle me-1 mb-1"
+                            type="button"
+                            id="dropdownEvents"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            My Events
+                        </button>
+                        <div class="dropdown-menu mb-1" aria-labelledby="dropdownEvents">
+                            <a class="dropdown-item" href="#">Item 1</a>
+                            <a class="dropdown-item" href="#">Item 2</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button
+                            class="btn btn-secondary dropdown-toggle me-1 mb-1"
+                            type="button"
+                            id="dropdownRegistrations"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            My Registrations
+                        </button>
+                        <div class="dropdown-menu mb-1" aria-labelledby="dropdownRegistrations">
+                            <a class="dropdown-item" href="#">Active</a>
+                            <a class="dropdown-item" href="#">History</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-secondary me-1" href="#">My Account</a>
+                </li>
+            </ul>
         </div>
-        <li class="nav-item">
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle me-1 mb-1"
-              type="button"
-              id="dropdownRegistrations"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              My Registrations
-            </button>
-            <div class="dropdown-menu mb-1" aria-labelledby="dropdownRegistrations">
-              <a class="dropdown-item" href="#">Active</a>
-              <a class="dropdown-item" href="#">History</a>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-secondary me-1" href="#">My Account</a>
-        </li>
-      </ul>
     </div>
-  </div>
 </nav>
 <nav class="navbar navbar-expand navbar-light bg-light">
-  <div class="container-fluid justify-content-end">
-    <ul class="navbar-nav">
-      <li class="navbar-text text-dark">
-        Brought to you by Wellner en Co
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-primary mx-1" href="#">Sign up</a>
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-primary" href="#">Log in</a>
-      </li>
-    </ul>
-  </div>
+    <div class="container-fluid justify-content-end">
+        <ul class="navbar-nav w-100">
+            <li class="navbar-text text-dark me-auto">Today is: {{ dateToday }}</li>
+            <li class="navbar-text text-dark">Brought to you by Wellner en Co</li>
+            <li class="nav-item">
+                <a class="btn btn-primary mx-1" href="#">Sign up</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary" href="#">Log in</a>
+            </li>
+        </ul>
+    </div>
 </nav>

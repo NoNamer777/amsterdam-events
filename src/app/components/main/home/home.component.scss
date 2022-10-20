@@ -1,14 +1,11 @@
 :host {
-
-  #middle-column {
-
-    .d-flex {
-
-      a {
-        flex: 25%;
-        max-width: 30%;
-        margin: 0 1em 1em 0;
-      }
+    #middle-column {
+        .d-flex {
+            a {
+                flex: 25%;
+                max-width: 30%;
+                margin: 0 1em 1em 0;
+            }
+        }
     }
-  }
 }
