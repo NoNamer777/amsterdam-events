@@ -13,6 +13,8 @@
         "noImplicitAny": true,
         "noImplicitThis": true,
         "useUnknownInCatchVariables": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
         "noImplicitOverride": true,
         "noPropertyAccessFromIndexSignature": true,
         "noImplicitReturns": true,
