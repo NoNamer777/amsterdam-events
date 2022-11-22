@@ -18,7 +18,6 @@ export class Overview2Component {
      * @param event The event that is selected.
      */
     onSelectEvent(event: AEvent): void {
-        console.log(event);
         if (event.id === this.selectedEvent?.id) {
             return;
         }
@@ -30,8 +29,9 @@ export class Overview2Component {
      * Checks whether any event has been selected, or whether the event
      * that has been passed through to the function has been selected.
      */
-    isEventSelected(event: AEvent): boolean {
+    isEventSelected(event?: AEvent): boolean {
         // When event is `null` check whether any event has been selected.
+        if (!event) return this.selectedEvent !== null;
 
         // Otherwise, check if event is the same as the selected event.
         return event.id === this.selectedEvent?.id;
@@ -48,7 +48,7 @@ export class Overview2Component {
         for (let i = 0; i < RANDOM_GENERATED_EVENTS; i++) {
             event = new AEvent(i + 1);
 
-            event.title = `The Fantastic event-${i}`;
+            event.title = `The Fantastic event-${i + 1}`;
             event.status = this.randomEventStatus();
             event.start = this.randomDate();
             event.end = this.randomDate(event.start);
@@ -58,8 +58,6 @@ export class Overview2Component {
 
             this.events.push(event);
         }
-
-        console.log(this.events);
     }
 
     private randomEventStatus(): AEventStatus {

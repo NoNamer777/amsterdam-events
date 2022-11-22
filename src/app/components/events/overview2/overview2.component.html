@@ -12,22 +12,24 @@
                     </thead>
                     <tbody>
                         <tr
-                            *ngFor="let event of events; let id = index"
+                            *ngFor="let event of events"
                             (click)="onSelectEvent(event)"
                             [class.table-primary]="isEventSelected(event)"
                         >
-                            <th scope="row">{{ id }}</th>
+                            <th scope="row">{{ event.id }}</th>
                             <td>{{ event.title }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="col">
-            <p>Select an event in the panel on the left.</p>
+        <ng-template #selectEventAltText>
+            <div class="col">
+                <p>Select an event in the panel on the left.</p>
+            </div>
+        </ng-template>
+        <div *ngIf="isEventSelected(); else selectEventAltText" class="col">
+            <p>This is the event details {{ selectedEvent.id }}</p>
         </div>
-        <div class="col"></div>
     </div>
 </div>
-
-<!--TODO - As suggested in the task, use the ngif Angular syntax to show the detail2 template or an alternative message. -->
