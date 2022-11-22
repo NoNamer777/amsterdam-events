@@ -23,7 +23,7 @@ export class Overview1Component {
         for (let i = 0; i < RANDOM_GENERATED_EVENTS; i++) {
             event = new AEvent(i + 1);
 
-            event.title = `The Fantastic event-${i}`;
+            event.title = `The Fantastic event-${i + 1}`;
             event.status = this.randomEventStatus();
             event.start = this.randomDate();
             event.end = this.randomDate(event.start);

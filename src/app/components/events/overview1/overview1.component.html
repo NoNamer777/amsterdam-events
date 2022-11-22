@@ -14,8 +14,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let event of events; let id = index">
-                <th scope="row">{{ id }}</th>
+            <tr *ngFor="let event of events">
+                <th scope="row">{{ event.id }}</th>
                 <td>{{ event.title }}</td>
                 <td>{{ event.start }}</td>
                 <td>{{ event.end }}</td>
