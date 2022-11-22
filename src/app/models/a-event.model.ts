@@ -7,6 +7,7 @@ export enum AEventStatus {
 }
 
 export class AEvent {
+    private _id: number;
     private _title: string;
     private _start: Date;
     private _end: Date;
@@ -15,6 +16,14 @@ export class AEvent {
     private _hasTickets: boolean;
     private _participationFee: number;
     private _maxParticipants: number;
+
+    constructor(id: number) {
+        this._id = id;
+    }
+
+    get id(): number {
+        return this._id;
+    }
 
     get title(): string {
         return this._title;

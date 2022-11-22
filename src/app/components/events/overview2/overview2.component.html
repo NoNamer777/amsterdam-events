@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row align-items-start">
+        <div class="col">
+            <div class="table-responsive">
+                <h3>Overview of all events:</h3>
+                <table class="table table-hover table-striped align-middle">
+                    <thead>
+                        <tr class="table-info">
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let event of events"
+                            (click)="onSelectEvent(event)"
+                            [class.table-primary]="isEventSelected(event)"
+                        >
+                            <th scope="row">{{ event.id }}</th>
+                            <td>{{ event.title }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ng-template #selectEventAltText>
+            <div class="col">
+                <p>Select an event in the panel on the left.</p>
+            </div>
+        </ng-template>
+        <div *ngIf="isEventSelected(); else selectEventAltText" class="col">
+            <p>This is the event details {{ selectedEvent.id }}</p>
+        </div>
+    </div>
+</div>

@@ -6,11 +6,36 @@ const MAX_EVENT_PARTICIPATION_FEE = 50;
 const RANDOM_GENERATED_EVENTS = 10;
 
 @Component({
-    selector: 'app-overview1',
-    templateUrl: './overview1.component.html',
-    styleUrls: ['./overview1.component.scss'],
+    selector: 'app-overview2',
+    templateUrl: './overview2.component.html',
+    styleUrls: ['./overview2.component.scss'],
 })
-export class Overview1Component {
+export class Overview2Component {
+    selectedEvent: AEvent = null;
+
+    /**
+     * Selects an event.
+     * @param event The event that is selected.
+     */
+    onSelectEvent(event: AEvent): void {
+        if (event.id === this.selectedEvent?.id) {
+            return;
+        }
+
+        this.selectedEvent = event;
+    }
+
+    /**
+     * Checks whether any event has been selected, or whether the event
+     * that has been passed through to the function has been selected.
+     */
+    isEventSelected(event?: AEvent): boolean {
+        // When event is `null` check whether any event has been selected.
+        if (!event) return this.selectedEvent !== null;
+
+        // Otherwise, check if event is the same as the selected event.
+        return event.id === this.selectedEvent?.id;
+    }
     events: AEvent[] = [];
 
     constructor() {
@@ -33,8 +58,6 @@ export class Overview1Component {
 
             this.events.push(event);
         }
-
-        console.log(this.events);
     }
 
     private randomEventStatus(): AEventStatus {
