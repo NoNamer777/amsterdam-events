@@ -29,4 +29,8 @@ export class EventsOverview2ComponentHarness extends ComponentHarness {
     async getEventElements(): Promise<TestElement[]> {
         return this.eventElementsLocator();
     }
+
+    async isEventSelected(index: number): Promise<boolean> {
+        return await (await this.getEventElements())[index].hasClass('table-primary');
+    }
 }

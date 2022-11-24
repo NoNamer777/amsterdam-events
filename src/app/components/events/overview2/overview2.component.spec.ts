@@ -32,4 +32,32 @@ fdescribe('Overview2Component', () => {
         expect(await harness.isEventDetailsVisible()).toBeFalse();
         expect(await harness.hasEventSelected()).toBeFalse();
     });
+
+    it('should set event by click action', async () => {
+        const { harness } = await setupTestEnvironment();
+
+        expect(await harness.hasEventSelected()).toBeFalse();
+
+        await harness.selectEventByIndex(1);
+        expect(await harness.hasEventSelected()).toBeTrue();
+        expect(await harness.isEventSelected(1)).toBeTrue();
+        expect(await harness.isEventSelected(2)).toBeFalse();
+
+        await harness.selectEventByIndex(2);
+        expect(await harness.hasEventSelected()).toBeTrue();
+        expect(await harness.isEventSelected(2)).toBeTrue();
+        expect(await harness.isEventSelected(1)).toBeFalse();
+    });
+
+    it('should show event details when event is selected', async () => {
+        const { harness } = await setupTestEnvironment();
+
+        expect(await harness.isEventDetailsPlaceholderVisible()).toBeTrue();
+        expect(await harness.isEventDetailsVisible()).toBeFalse();
+
+        await harness.selectEventByIndex(1);
+
+        expect(await harness.isEventDetailsPlaceholderVisible()).toBeFalse();
+        expect(await harness.isEventDetailsVisible()).toBeTrue();
+    });
 });
