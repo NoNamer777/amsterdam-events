@@ -5,7 +5,7 @@ import { TestBed } from '@angular/core/testing';
 import { EventsOverview2ComponentHarness } from '../../../../testing';
 import { Overview2Component } from './overview2.component';
 
-fdescribe('Overview2Component', () => {
+describe('Overview2Component', () => {
     @Component({
         template: `<app-overview2></app-overview2>`,
     })

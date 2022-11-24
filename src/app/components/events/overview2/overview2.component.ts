@@ -13,6 +13,10 @@ const RANDOM_GENERATED_EVENTS = 10;
 export class Overview2Component {
     selectedEvent: AEvent = null;
 
+    onAddEvent(): void {
+        alert('To be done!');
+    }
+
     /**
      * Selects an event.
      * @param event The event that is selected.
