@@ -14,6 +14,7 @@
                         <tr
                             *ngFor="let event of events"
                             (click)="onSelectEvent(event)"
+                            class="event-title"
                             [class.table-primary]="isEventSelected(event)"
                         >
                             <th scope="row">{{ event.id }}</th>
@@ -24,11 +25,11 @@
             </div>
         </div>
         <ng-template #selectEventAltText>
-            <div class="col">
+            <div class="col event-details-placeholder">
                 <p>Select an event in the panel on the left.</p>
             </div>
         </ng-template>
-        <div *ngIf="isEventSelected(); else selectEventAltText" class="col">
+        <div *ngIf="isEventSelected(); else selectEventAltText" class="col event-details">
             <p>This is the event details {{ selectedEvent.id }}</p>
         </div>
     </div>
