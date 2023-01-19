@@ -4,7 +4,7 @@ export class EventsOverview1ComponentHarness extends ComponentHarness {
     static hostSelector = 'app-overview1';
 
     private eventElementsLocator = this.locatorForAll('tr.event');
-    private addEventButtonLocator = this.locatorFor('button.addEvent');
+    private addEventButtonLocator = this.locatorFor('button.add-event');
 
     async getEventElements(): Promise<TestElement[]> {
         return this.eventElementsLocator();
