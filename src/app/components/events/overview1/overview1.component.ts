@@ -17,24 +17,35 @@ export class Overview1Component {
         this.randomEvents();
     }
 
-    randomEvents(): void {
-        let event: AEvent;
+    getParticipationFee(event: AEvent): string {
+        return event.hasTickets ? `€${event.participationFee}` : '';
+    }
 
+    getMaxParticipants(event: AEvent): string {
+        return event.maxParticipants ? `${event.maxParticipants}` : '';
+    }
+
+    onAddEvent(): void {
+        this.events.push(this.generateEvent());
+    }
+
+    private randomEvents(): void {
         for (let i = 0; i < RANDOM_GENERATED_EVENTS; i++) {
-            event = new AEvent(i + 1);
-
-            event.title = `The Fantastic event-${i + 1}`;
-            event.status = this.randomEventStatus();
-            event.start = this.randomDate();
-            event.end = this.randomDate(event.start);
-            event.hasTickets = Math.random() >= 0.5;
-            event.participationFee = event.hasTickets ? Math.floor(Math.random() * MAX_EVENT_PARTICIPATION_FEE) : 0;
-            event.maxParticipants = event.hasTickets ? Math.floor(Math.random() * MAX_EVENT_PARTICIPANTS) : 0;
-
-            this.events.push(event);
+            this.events.push(this.generateEvent());
         }
+    }
 
-        console.log(this.events);
+    private generateEvent(): AEvent {
+        const newEvent = new AEvent();
+        newEvent.title = `The Fantastic event-${newEvent.id}`;
+        newEvent.status = this.randomEventStatus();
+        newEvent.start = this.randomDate();
+        newEvent.end = this.randomDate(newEvent.start);
+        newEvent.hasTickets = Math.random() >= 0.5;
+        newEvent.participationFee = newEvent.hasTickets ? Math.floor(Math.random() * MAX_EVENT_PARTICIPATION_FEE) : 0;
+        newEvent.maxParticipants = newEvent.hasTickets ? Math.floor(Math.random() * MAX_EVENT_PARTICIPANTS) : 0;
+
+        return newEvent;
     }
 
     private randomEventStatus(): AEventStatus {

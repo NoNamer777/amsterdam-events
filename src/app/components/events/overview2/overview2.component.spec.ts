@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EventsOverview2ComponentHarness } from '../../../../testing';
+import { Details2Component } from '../details2/details2.component';
 import { Overview2Component } from './overview2.component';
 
 describe('Overview2Component', () => {
@@ -14,7 +15,7 @@ describe('Overview2Component', () => {
     async function setupTestEnvironment() {
         TestBed.configureTestingModule({
             imports: [CommonModule],
-            declarations: [Overview2Component, TestComponent],
+            declarations: [Details2Component, Overview2Component, TestComponent],
         });
 
         const harnessLoader = TestbedHarnessEnvironment.loader(TestBed.createComponent(TestComponent));
@@ -47,6 +48,10 @@ describe('Overview2Component', () => {
         expect(await harness.hasEventSelected()).toBeTrue();
         expect(await harness.isEventSelected(2)).toBeTrue();
         expect(await harness.isEventSelected(1)).toBeFalse();
+
+        await harness.selectEventByIndex(2);
+        expect(await harness.hasEventSelected()).toBeTrue();
+        expect(await harness.isEventSelected(2)).toBeTrue();
     });
 
     it('should show event details when event is selected', async () => {

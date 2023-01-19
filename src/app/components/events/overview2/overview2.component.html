@@ -1,28 +1,32 @@
 <div class="container-fluid">
     <div class="row align-items-start">
+        <h3>Overview of all events</h3>
         <div class="col">
             <div class="table-responsive">
-                <h3>Overview of all events:</h3>
-                <table class="table table-hover table-striped align-middle">
-                    <thead>
-                        <tr class="table-info">
-                            <th scope="col">#</th>
-                            <th scope="col">Title</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            *ngFor="let event of events"
-                            (click)="onSelectEvent(event)"
-                            class="event-title"
-                            [class.table-primary]="isEventSelected(event)"
-                        >
-                            <th scope="row">{{ event.id }}</th>
-                            <td>{{ event.title }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button (click)="onAddEvent()" type="button" class="btn btn-primary">Add event</button>
+                <div>
+                    <table class="table table-hover table-striped align-middle">
+                        <thead>
+                            <tr class="table-info">
+                                <th colspan="2">Event title:</th>
+                            </tr>
+                            <tr class="table-info">
+                                <th scope="col">#</th>
+                                <th scope="col">Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let event of events"
+                                (click)="onSelectEvent(event)"
+                                class="event-title"
+                                [class.table-primary]="isEventSelected(event)"
+                            >
+                                <th scope="row">{{ event.id }}</th>
+                                <td>{{ event.title }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <ng-template #selectEventAltText>
@@ -30,8 +34,6 @@
                 <p>Select an event in the panel on the left.</p>
             </div>
         </ng-template>
-        <div *ngIf="isEventSelected(); else selectEventAltText" class="col event-details">
-            <p>This is the event details {{ selectedEvent.id }}</p>
-        </div>
+        <app-details2 *ngIf="isEventSelected(); else selectEventAltText" class="col event-details"> </app-details2>
     </div>
 </div>
