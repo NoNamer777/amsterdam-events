@@ -39,6 +39,12 @@
                 <p>Select an event in the panel on the left.</p>
             </div>
         </ng-template>
-        <app-details2 *ngIf="isEventSelected(); else selectEventAltText" class="col event-details"> </app-details2>
+        <app-details2
+            *ngIf="isEventSelected(); else selectEventAltText"
+            class="col event-details"
+            [selectedEvent]="selectedEvent"
+            (changedEvent)="changeEvent($event)"
+            (deleteEvent)="deleteEvent($event)"
+        ></app-details2>
     </div>
 </div>

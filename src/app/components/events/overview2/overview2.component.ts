@@ -26,7 +26,16 @@ export class Overview2Component {
             return;
         }
 
-        this.selectedEvent = event;
+        this.selectedEvent = Object.assign(new AEvent(false), event);
+    }
+
+    changeEvent(newEvent: AEvent) {
+        this.events = this.events.map((oldEvent) => (oldEvent.id === newEvent.id ? newEvent : oldEvent));
+    }
+
+    deleteEvent(eventId: number) {
+        this.events = this.events.filter((event) => event.id !== eventId);
+        this.selectedEvent = null;
     }
 
     /**

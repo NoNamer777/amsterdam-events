@@ -19,7 +19,9 @@ export class AEvent {
 
     private static nextId = 1;
 
-    constructor() {
+    constructor(newId = true) {
+        if (!newId) return;
+
         this._id = AEvent.nextId++;
     }
 
