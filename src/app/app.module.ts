@@ -15,7 +15,6 @@ import { HomeComponent } from './components/main/home/home.component';
         Overview1Component,
         Overview2Component,
         Details2Component,
-        Details2Component,
     ],
     imports: [BrowserModule],
     providers: [],
