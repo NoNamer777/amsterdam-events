@@ -7,6 +7,7 @@ export class EventsOverview2ComponentHarness extends ComponentHarness {
     private selectedEventElementLocator = this.locatorForOptional('tr.event-title.table-primary');
     private eventDetailsPlaceholderLocator = this.locatorForOptional('.event-details-placeholder');
     private eventDetailsLocator = this.locatorForOptional('.event-details');
+    private addEventButtonLocator = this.locatorFor('button.add-event');
 
     async selectEventByIndex(index: number): Promise<void> {
         const eventElements = await this.eventElementsLocator();
@@ -32,5 +33,11 @@ export class EventsOverview2ComponentHarness extends ComponentHarness {
 
     async isEventSelected(index: number): Promise<boolean> {
         return await (await this.getEventElements())[index].hasClass('table-primary');
+    }
+
+    async fireAddEventButton(): Promise<void> {
+        const addEventButton = await this.addEventButtonLocator();
+
+        await addEventButton.click();
     }
 }

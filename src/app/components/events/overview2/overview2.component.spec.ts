@@ -65,4 +65,13 @@ describe('Overview2Component', () => {
         expect(await harness.isEventDetailsPlaceholderVisible()).toBeFalse();
         expect(await harness.isEventDetailsVisible()).toBeTrue();
     });
+
+    it('should add new event', async () => {
+        const { harness } = await setupTestEnvironment();
+
+        expect((await harness.getEventElements()).length).toEqual(10);
+
+        await harness.fireAddEventButton();
+        expect((await harness.getEventElements()).length).toEqual(11);
+    });
 });

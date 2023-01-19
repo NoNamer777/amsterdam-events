@@ -14,7 +14,7 @@ export class Overview2Component {
     selectedEvent: AEvent = null;
 
     onAddEvent(): void {
-        alert('To be done!');
+        this.events.push(this.generateEvent());
     }
 
     /**
