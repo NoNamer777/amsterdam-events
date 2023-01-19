@@ -1,8 +1,8 @@
+import { EventsOverview1ComponentHarness } from '@amsterdam-events/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { EventsOverview1ComponentHarness } from '../../../../testing/harnesses/components/events-overview1-component.harness';
 import { Overview1Component } from './overview1.component';
 
 describe('Overview1Component', () => {
