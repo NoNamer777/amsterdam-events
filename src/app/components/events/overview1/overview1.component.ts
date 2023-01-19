@@ -25,6 +25,9 @@ export class Overview1Component {
         return event.maxParticipants ? `${event.maxParticipants}` : '';
     }
 
+    onAddEvent(): void {
+        this.events.push(this.generateEvent());
+    }
 
     private randomEvents(): void {
         for (let i = 0; i < RANDOM_GENERATED_EVENTS; i++) {
