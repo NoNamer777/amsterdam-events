@@ -14,7 +14,9 @@ export class Overview2Component {
     selectedEvent: AEvent = null;
 
     onAddEvent(): void {
-        this.events.push(this.generateEvent());
+        const event = this.generateEvent();
+        this.events.push(event);
+        this.onSelectEvent(event);
     }
 
     /**
