@@ -1,8 +1,8 @@
+import { EventsOverview2ComponentHarness } from '@amsterdam-events/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { EventsOverview2ComponentHarness } from '../../../../testing';
 import { Details2Component } from '../details2/details2.component';
 import { Overview2Component } from './overview2.component';
 
@@ -64,5 +64,14 @@ describe('Overview2Component', () => {
 
         expect(await harness.isEventDetailsPlaceholderVisible()).toBeFalse();
         expect(await harness.isEventDetailsVisible()).toBeTrue();
+    });
+
+    it('should add new event', async () => {
+        const { harness } = await setupTestEnvironment();
+
+        expect((await harness.getEventElements()).length).toEqual(10);
+
+        await harness.fireAddEventButton();
+        expect((await harness.getEventElements()).length).toEqual(11);
     });
 });
