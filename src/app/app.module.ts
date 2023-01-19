@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { Details2Component } from './components/events/details2/details2.component';
@@ -16,7 +17,7 @@ import { HomeComponent } from './components/main/home/home.component';
         Overview2Component,
         Details2Component,
     ],
-    imports: [BrowserModule],
+    imports: [BrowserModule, FormsModule],
     providers: [],
     bootstrap: [AppComponent],
 })
