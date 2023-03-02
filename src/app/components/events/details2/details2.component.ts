@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { AEvent, AEventStatus } from '../../../models/a-event.model';
 
 @Component({
     selector: 'app-details2',
     templateUrl: './details2.component.html',
     styleUrls: ['./details2.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Details2Component {
     @Input() selectedEvent: AEvent;
