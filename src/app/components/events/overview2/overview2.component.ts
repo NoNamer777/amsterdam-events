@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AEvent, AEventStatus } from '../../../models/a-event.model';
 
 const MAX_EVENT_PARTICIPANTS = 8000;
@@ -9,12 +9,20 @@ const RANDOM_GENERATED_EVENTS = 10;
     selector: 'app-overview2',
     templateUrl: './overview2.component.html',
     styleUrls: ['./overview2.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Overview2Component {
+export class Overview2Component implements OnInit {
     selectedEvent: AEvent = null;
+    events: AEvent[] = [];
+
+    ngOnInit(): void {
+        this.randomEvents();
+    }
 
     onAddEvent(): void {
-        this.events.push(this.generateEvent());
+        const event = this.generateEvent();
+        this.events.push(event);
+        this.onSelectEvent(event);
     }
 
     /**
@@ -26,7 +34,16 @@ export class Overview2Component {
             return;
         }
 
-        this.selectedEvent = event;
+        this.selectedEvent = Object.assign(new AEvent(false), event);
+    }
+
+    changeEvent(newEvent: AEvent) {
+        this.events = this.events.map((oldEvent) => (oldEvent.id === newEvent.id ? newEvent : oldEvent));
+    }
+
+    deleteEvent(eventId: number) {
+        this.events = this.events.filter((event) => event.id !== eventId);
+        this.selectedEvent = null;
     }
 
     /**
@@ -39,11 +56,6 @@ export class Overview2Component {
 
         // Otherwise, check if event is the same as the selected event.
         return event.id === this.selectedEvent?.id;
-    }
-    events: AEvent[] = [];
-
-    constructor() {
-        this.randomEvents();
     }
 
     randomEvents(): void {
