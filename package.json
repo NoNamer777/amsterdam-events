@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "format:check": "prettier -l .",
     "format:write": "prettier -w .",
-    "check": "run-s -l lint format:check build test-ci"
+    "check": "run-s -l lint format:check build test"
   },
   "private": true,
   "dependencies": {
