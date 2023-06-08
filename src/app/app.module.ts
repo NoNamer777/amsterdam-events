@@ -18,7 +18,6 @@ import { HomeComponent } from './components/main/home/home.component';
         Details2Component,
     ],
     imports: [BrowserModule, FormsModule],
-    providers: [],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
