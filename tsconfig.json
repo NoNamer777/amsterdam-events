@@ -1,44 +1,41 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
     "compileOnSave": false,
-    "compilerOptions": {
-        "baseUrl": "./",
-        "outDir": "./dist/out-tsc",
-        "forceConsistentCasingInFileNames": true,
-        "strictPropertyInitialization": false,
-        "alwaysStrict": true,
-        "strictNullChecks": false,
-        "strictBindCallApply": true,
-        "strictFunctionTypes": true,
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "useUnknownInCatchVariables": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noImplicitOverride": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "sourceMap": true,
-        "declaration": false,
-        "downlevelIteration": true,
-        "experimentalDecorators": true,
-        "moduleResolution": "node",
-        "importHelpers": true,
-        "target": "es2020",
-        "module": "es2020",
-        "lib": [
-            "es2020",
-            "dom"
-        ],
-        "paths": {
-            "@amsterdam-events/testing": ["./src/testing"]
-        }
-    },
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false,
         "strictInjectionParameters": true,
         "strictInputAccessModifiers": true,
         "strictTemplates": true
+    },
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "baseUrl": "./",
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "importHelpers": true,
+        "lib": ["ES2022", "DOM"],
+        "module": "ES2022",
+        "moduleResolution": "Node",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "outDir": "./dist/out-tsc",
+        "paths": {
+            "@amsterdam-events/testing": ["./src/testing"]
+        },
+        "sourceMap": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": false,
+        "strictPropertyInitialization": false,
+        "target": "ES2022",
+        "useUnknownInCatchVariables": true
     }
 }
