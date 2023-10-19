@@ -79,8 +79,7 @@ describe('Overview2Component', () => {
         expect((await harness.getEventElements()).length).toEqual(11);
     });
 
-    // Ignore test for now because it doesn't reflect the changed title after the save has been emitted.
-    xit('should save event changes', async () => {
+    it('should save event changes', async () => {
         const { harness, harnessLoader } = await setupTestEnvironment();
         const newEventTitle = 'my event title';
 
@@ -98,7 +97,7 @@ describe('Overview2Component', () => {
         await detailsComponentHarness.saveEvent();
 
         expect(await detailsComponentHarness.getEventTitle()).toEqual(newEventTitle);
-        expect(await (await harness.getEventElements())[0].text()).toEqual(newEventTitle);
+        expect(await harness.getEventTitle(0)).toEqual(newEventTitle);
     });
 
     it('should delete event', async () => {
