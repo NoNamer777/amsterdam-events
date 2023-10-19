@@ -12,6 +12,7 @@ export class AEventsService {
     public events: AEvent[] = [];
 
     constructor() {
+        AEvent.nextId = 1;
         this.addRandomAEvent();
     }
 
@@ -20,6 +21,15 @@ export class AEventsService {
      */
     getAll(): AEvent[] {
         return this.events;
+    }
+
+    getById(id: number): AEvent {
+        const foundEvent = this.events.find((event) => event.id === id);
+
+        if (foundEvent === undefined) {
+            throw new Error(`Event with id '${id}' does not exist`);
+        }
+        return foundEvent;
     }
 
     /**
@@ -34,23 +44,32 @@ export class AEventsService {
 
     /**
      * replace the identified event with the provided
-     * @param index of the event which needs to be updated
-     * @param aEvent data to update the existing event with
+     * @param id The ID of the AEvent which needs to be updated.
+     * @param updatedEvent The updated AEvent data.
      */
-    update(index: number, aEvent: AEvent): void {
-        // TODO
-        this.events[index] = aEvent;
+    update(id: number, updatedEvent: AEvent): void {
+        const listedEvent = this.events.find((listEvents) => listEvents.id === id);
+
+        if (listedEvent === undefined) {
+            throw new Error(`Can't update AEvent with ID: '${id}' because it has not been created yet`);
+        }
+        if (listedEvent.id !== updatedEvent.id) {
+            throw new Error(
+                `Can't update AEvent with ID: '${listedEvent.id}' with data from AEvent with ID: '${updatedEvent.id}'`,
+            );
+        }
+        this.events = this.events.map((listedEvents) => (listedEvents.id === id ? updatedEvent : listedEvents));
     }
 
     /**
-     * remove the identified event from the collection
+     * Remove the identified event from the collection
      * and return the removed instance
-     * @param index of the event to remove
+     * @param id The ID of the AEvent to remove.
      */
-    remove(index: number): AEvent {
-        const removedEvent = this.events.at(index);
-        this.events = this.events.splice(index, 1);
-        return removedEvent;
+    remove(id: number): AEvent {
+        const index = this.events.indexOf(this.getById(id));
+
+        return this.events.splice(index, 1)[0];
     }
 
     /** Generate {@link RANDOM_GENERATED_EVENTS} number of "random" events */
