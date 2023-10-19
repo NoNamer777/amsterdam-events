@@ -1,12 +1,6 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
     "compileOnSave": false,
-    "angularCompilerOptions": {
-        "enableI18nLegacyMessageIdFormat": false,
-        "strictInjectionParameters": true,
-        "strictInputAccessModifiers": true,
-        "strictTemplates": true
-    },
     "compilerOptions": {
         "alwaysStrict": true,
         "baseUrl": "./",
@@ -36,6 +30,13 @@
         "strictNullChecks": false,
         "strictPropertyInitialization": false,
         "target": "ES2022",
+        "useDefineForClassFields": false,
         "useUnknownInCatchVariables": true
+    },
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
     }
 }
