@@ -8,7 +8,8 @@ export class EventsDetails2ComponentHarness extends ComponentHarness {
     private deleteEventButtonLocator = this.locatorFor('button.delete-event');
 
     async changeEventTitle(title: string): Promise<void> {
-        await (await this.eventElementsLocator()).setInputValue(title);
+        await (await this.eventElementsLocator()).clear();
+        await (await this.eventElementsLocator()).sendKeys(title);
     }
 
     async getEventTitle(): Promise<string> {

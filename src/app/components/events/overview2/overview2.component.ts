@@ -16,6 +16,7 @@ export class Overview2Component implements OnInit {
     events: AEvent[] = [];
 
     ngOnInit(): void {
+        AEvent.nextId = 1;
         this.randomEvents();
     }
 

@@ -17,7 +17,7 @@ export class AEvent {
     private _participationFee: number;
     private _maxParticipants: number;
 
-    private static nextId = 1;
+    static nextId = 1;
 
     constructor(newId = true) {
         if (!newId) return;
