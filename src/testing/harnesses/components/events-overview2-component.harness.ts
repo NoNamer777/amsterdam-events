@@ -5,6 +5,7 @@ export class EventsOverview2ComponentHarness extends ComponentHarness {
     static hostSelector = 'app-overview2';
 
     private eventElementsLocator = this.locatorForAll('tr.event-title');
+    private eventTitleLocator = this.locatorForAll('tr.event-title td');
     private selectedEventElementLocator = this.locatorForOptional(`tr.event-title.table-primary td`);
     private eventDetailsPlaceholderLocator = this.locatorForOptional('.event-details-placeholder');
     private eventDetailsLocator = this.locatorForOptional(EventsDetails2ComponentHarness);
@@ -38,6 +39,10 @@ export class EventsOverview2ComponentHarness extends ComponentHarness {
 
     async getEventElements(): Promise<TestElement[]> {
         return this.eventElementsLocator();
+    }
+
+    async getEventTitle(index: number): Promise<string> {
+        return await (await this.eventTitleLocator())[index].text();
     }
 
     async isEventSelected(index: number): Promise<boolean> {
