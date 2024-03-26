@@ -30,10 +30,7 @@
                         "main": "src/main.ts",
                         "outputPath": "dist/amsterdam-events",
                         "polyfills": ["zone.js"],
-                        "scripts": [
-                            "node_modules/@popperjs/core/dist/umd/popper.min.js",
-                            "node_modules/bootstrap/dist/js/bootstrap.min.js"
-                        ],
+                        "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
                         "styles": ["src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
                         "tsConfig": "tsconfig.app.json"
                     },
@@ -90,10 +87,7 @@
                         "codeCoverage": true,
                         "codeCoverageExclude": ["src/app/models/**/*", "src/environments/**/*", "src/testing/**/*"],
                         "polyfills": ["zone.js", "zone.js/testing"],
-                        "scripts": [
-                            "node_modules/@popperjs/core/dist/umd/popper.min.js",
-                            "node_modules/bootstrap/dist/js/bootstrap.min.js"
-                        ],
+                        "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
                         "styles": ["src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
                         "tsConfig": "tsconfig.spec.json",
                         "watch": false
