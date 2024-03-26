@@ -71,10 +71,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "amsterdam-events:build:production"
+                            "buildTarget": "amsterdam-events:build:production"
                         },
                         "development": {
-                            "browserTarget": "amsterdam-events:build:development"
+                            "buildTarget": "amsterdam-events:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
