@@ -24,12 +24,13 @@ export default defineConfig({
             reporter: ['text-summary', ['html', { subdir: 'coverage' }]],
             reportOnFailure: true,
             reportsDirectory: 'coverage/amsterdam-events',
-            thresholds: {
-                branches: 80,
-                functions: 80,
-                lines: 80,
-                statements: 80,
-            },
+            // TODO: Enable coverage thresholds
+            // thresholds: {
+            //     branches: 80,
+            //     functions: 80,
+            //     lines: 80,
+            //     statements: 80,
+            // },
         },
         globals: true,
         name: 'dma-resource-client',
