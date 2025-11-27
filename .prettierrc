@@ -1,0 +1,33 @@
+{
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    },
+    {
+      "files": ["package*.json"],
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": [".prettierrc"],
+      "options": {
+        "tabWidth": 4,
+          "parser": "json"
+      }
+    }
+  ],
+  "printWidth": 120,
+  "quoteProps": "consistent",
+  "singleQuote": true,
+  "tabWidth": 4,
+  "trailingComma": "all",
+  "useTabs": false
+}
+
