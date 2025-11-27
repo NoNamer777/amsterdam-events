@@ -3,21 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
+  "scripts": {
+    "start": "npx ng serve",
+    "build": "npx ng build",
+    "build:dev": "npx ng build -c dev",
+    "test": "npx ng test",
+    "test:dev": "npx ng test -c dev",
+    "test:reports": "npx vite preview coverage/amsterdam-events/coverage",
+    "lint": "npx ng lint",
+    "format:check": "npx prettier -l .",
+    "format:write": "npx prettier -w ."
+  },
   "engines": {
     "node": ">=24",
     "npm": ">=11"
-  },
-  "scripts": {
-    "ng": "ng",
-    "build": "ng build",
-    "build-dev": "ng build --watch",
-    "start": "ng serve",
-    "test": "ng test",
-    "test-dev": "ng test --watch",
-    "lint": "ng lint",
-    "format:check": "prettier -l .",
-    "format:write": "prettier -w .",
-    "check": "run-s -l lint format:check build test"
   },
   "dependencies": {
     "@angular/animations": "~18.2.0",
