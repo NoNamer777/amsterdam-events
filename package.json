@@ -1,6 +1,8 @@
 {
   "name": "amsterdam-events",
   "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=24",
     "npm": ">=11"
@@ -17,7 +19,6 @@
     "format:write": "prettier -w .",
     "check": "run-s -l lint format:check build test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",
     "@angular/cdk": "~18.2.0",
