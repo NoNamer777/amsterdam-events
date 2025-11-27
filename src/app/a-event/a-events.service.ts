@@ -66,7 +66,7 @@ export class AEventsService {
         const index = this.events().indexOf(this.getById(id));
         const removed = this.events()[index];
 
-        this.events.update((events) => events.filter(event => event.id !== removed.id));
+        this.events.update((events) => events.filter((event) => event.id !== removed.id));
         return removed;
     }
 

@@ -1,8 +1,6 @@
 {
     "extends": "./tsconfig.json",
-    "files": [
-      "vite.config.mts"
-    ],
+    "files": ["vite.config.mts"],
     "include": ["src/**/*.spec.ts", "src/**/*.d.ts", "test/**/*.ts"],
     "compilerOptions": {
         "outDir": "./out-tsc/spec",
