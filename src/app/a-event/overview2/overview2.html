@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row align-items-start">
+        <h3>Overview of all events</h3>
+        <div class="col">
+            <div class="table-responsive">
+                <div>
+                    <table class="table table-hover table-striped align-middle">
+                        <thead>
+                            <tr class="table-info">
+                                <th colspan="2">Event title:</th>
+                            </tr>
+                            <tr class="table-info">
+                                <th scope="col">#</th>
+                                <th scope="col">Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (aEvent of events; track aEvent.id) {
+                                <tr
+                                    class="event-title"
+                                    [class.table-primary]="isEventSelected(aEvent)"
+                                    (click)="onSelectEvent(aEvent)"
+                                >
+                                    <th scope="row">{{ aEvent.id }}</th>
+                                    <td>{{ aEvent.title }}</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary add-event" (click)="onAddEvent()">
+                            Add event
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (isEventSelected()) {
+            <app-details2
+                class="col event-details"
+                [selectedEvent]="selectedEvent"
+                (eventSaved)="onEventUpdated($event)"
+                (eventRemoved)="onEventRemoved($event)"
+            />
+        } @else {
+            <div class="col event-details-placeholder">
+                <p>Select an event in the panel on the left.</p>
+            </div>
+        }
+    </div>
+</div>

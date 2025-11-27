@@ -1,0 +1,46 @@
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr class="table-info">
+                <th colspan="2">Selected event details:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Title:</th>
+                <td><input type="text" class="form-control event-title" [(ngModel)]="selectedEvent.title" /></td>
+            </tr>
+
+            <tr>
+                <th>Description:</th>
+                <td><input type="text" class="form-control" [(ngModel)]="selectedEvent.description" /></td>
+            </tr>
+            <tr>
+                <th>Status:</th>
+                <td>
+                    <select class="form-select" [(ngModel)]="selectedEvent.status">
+                        @for (status of statuses; track status) {
+                            <option [value]="status">{{ status }}</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Tickets:</th>
+                <td><input type="checkbox" class="form-check-input" [(ngModel)]="selectedEvent.hasTickets" /></td>
+            </tr>
+            <tr>
+                <th>Participation Fee:</th>
+                <td><input type="number" class="form-control" [(ngModel)]="selectedEvent.participationFee" /></td>
+            </tr>
+            <tr>
+                <th>Maximum participants:</th>
+                <td><input type="number" class="form-control" [(ngModel)]="selectedEvent.maxParticipants" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-danger delete-event" (click)="onRemove()">Delete</button>
+        <button type="button" class="btn btn-success save-event" (click)="onSave()">Save</button>
+    </div>
+</div>
