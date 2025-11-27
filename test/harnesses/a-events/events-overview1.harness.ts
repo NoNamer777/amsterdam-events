@@ -1,6 +1,6 @@
 import { ComponentHarness, TestElement } from '@angular/cdk/testing';
 
-export class EventsOverview1ComponentHarness extends ComponentHarness {
+export class EventsOverview1Harness extends ComponentHarness {
     static hostSelector = 'app-overview1';
 
     private eventElementsLocator = this.locatorForAll('tr.event');

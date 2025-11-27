@@ -1,14 +1,14 @@
 import { ComponentHarness, TestElement } from '@angular/cdk/testing';
-import { EventsDetails2ComponentHarness } from './events-details2-component.harness';
+import { EventsDetails2Harness } from './events-details2.harness';
 
-export class EventsOverview2ComponentHarness extends ComponentHarness {
+export class EventsOverview2Harness extends ComponentHarness {
     static hostSelector = 'app-overview2';
 
     private eventElementsLocator = this.locatorForAll('tr.event-title');
     private eventTitleLocator = this.locatorForAll('tr.event-title td');
     private selectedEventElementLocator = this.locatorForOptional(`tr.event-title.table-primary td`);
     private eventDetailsPlaceholderLocator = this.locatorForOptional('.event-details-placeholder');
-    private eventDetailsLocator = this.locatorForOptional(EventsDetails2ComponentHarness);
+    private eventDetailsLocator = this.locatorForOptional(EventsDetails2Harness);
     private addEventButtonLocator = this.locatorFor('button.add-event');
 
     async selectEventByIndex(index: number): Promise<void> {
