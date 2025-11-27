@@ -1,17 +1,15 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+    "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.spec.json" }],
+    "files": [],
     "compileOnSave": false,
     "compilerOptions": {
-        "alwaysStrict": true,
         "baseUrl": "./",
         "declaration": false,
-        "downlevelIteration": true,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
         "importHelpers": true,
-        "lib": ["ES2022", "DOM"],
-        "module": "ES2022",
-        "moduleResolution": "Node",
+        "lib": ["ES2024", "DOM"],
+        "module": "preserve",
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noFallthroughCasesInSwitch": true,
@@ -20,16 +18,15 @@
         "noPropertyAccessFromIndexSignature": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "outDir": "./dist/out-tsc",
         "paths": {
-            "@amsterdam-events/testing": ["./src/testing"]
+            "@amsterdam-events/test": ["./test/index.ts"]
         },
         "sourceMap": true,
         "strictBindCallApply": true,
         "strictFunctionTypes": true,
         "strictNullChecks": false,
         "strictPropertyInitialization": false,
-        "target": "ES2022",
+        "target": "ES2024",
         "useDefineForClassFields": false,
         "useUnknownInCatchVariables": true
     },

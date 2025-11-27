@@ -4,7 +4,7 @@
     "newProjectRoot": "projects",
     "cli": {
         "analytics": false,
-        "schematicCollections": ["@angular-eslint/schematics"]
+        "schematicCollections": ["angular-eslint"]
     },
     "projects": {
         "amsterdam-events": {
@@ -12,9 +12,6 @@
             "schematics": {
                 "@schematics/angular:component": {
                     "style": "scss"
-                },
-                "@schematics/angular:application": {
-                    "strict": true
                 }
             },
             "root": "",
@@ -22,18 +19,21 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@angular/build:application",
                     "options": {
-                        "assets": ["src/assets", "src/favicon.ico"],
-                        "index": "src/index.html",
+                        "assets": [
+                            {
+                                "input": "public",
+                                "glob": "**/*"
+                            }
+                        ],
+                        "browser": "src/main.ts",
                         "inlineStyleLanguage": "scss",
-                        "main": "src/main.ts",
-                        "outputPath": "dist/amsterdam-events",
-                        "polyfills": ["zone.js"],
                         "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
                         "styles": ["src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
                         "tsConfig": "tsconfig.app.json"
                     },
+                    "defaultConfiguration": "production",
                     "configurations": {
                         "production": {
                             "budgets": [
@@ -47,62 +47,41 @@
                                     "maximumWarning": "2kb",
                                     "maximumError": "4kb"
                                 }
-                            ],
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.prod.ts"
-                                }
-                            ],
-                            "outputHashing": "all"
+                            ]
                         },
                         "development": {
-                            "buildOptimizer": false,
                             "extractLicenses": false,
                             "namedChunks": true,
                             "optimization": false,
-                            "sourceMap": true,
-                            "vendorChunk": true
+                            "sourceMap": true
                         }
-                    },
-                    "defaultConfiguration": "production"
+                    }
                 },
                 "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
-                    "configurations": {
-                        "production": {
-                            "buildTarget": "amsterdam-events:build:production"
-                        },
-                        "development": {
-                            "buildTarget": "amsterdam-events:build:development"
-                        }
-                    },
-                    "defaultConfiguration": "development"
+                    "builder": "@angular/build:dev-server",
+                    "options": {
+                        "buildTarget": "amsterdam-events:build:development"
+                    }
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular/build:unit-test",
                     "options": {
-                        "assets": ["src/favicon.ico", "src/assets"],
-                        "browsers": "ChromeHeadless",
-                        "codeCoverage": true,
-                        "codeCoverageExclude": ["src/app/models/**/*", "src/environments/**/*", "src/testing/**/*"],
-                        "polyfills": ["zone.js", "zone.js/testing"],
-                        "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
-                        "styles": ["src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
-                        "tsConfig": "tsconfig.spec.json",
-                        "watch": false
+                        "buildTarget": "amsterdam-events:build:development",
+                        "coverage": true,
+                        "runner": "vitest",
+                        "runnerConfig": "vite.config.mts",
+                        "tsConfig": "tsconfig.spec.json"
                     },
+                    "defaultConfiguration": "ci",
                     "configurations": {
-                        "test": {
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.test.ts"
-                                }
-                            ]
+                        "ci": {
+                            "watch": false
+                        },
+                        "dev": {
+                            "ui": true,
+                            "watch": true
                         }
-                    },
-                    "defaultConfiguration": "test"
+                    }
                 },
                 "lint": {
                     "builder": "@angular-eslint/builder:lint",
