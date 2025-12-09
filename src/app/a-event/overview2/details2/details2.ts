@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { AEvent, AEventStatuses } from '../../models';
 import { FormsModule } from '@angular/forms';
+import { AEvent } from '../../a-event.model';
+import { AEventStatuses } from '../../a-event-status.model';
 
 @Component({
     selector: 'app-details2',

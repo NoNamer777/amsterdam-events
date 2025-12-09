@@ -2,8 +2,8 @@ import { EventsDetails2Harness } from '@amsterdam-events/test';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { AEvent } from '../../models';
 import { Details2 } from './details2';
+import { AEvent } from '../../a-event.model';
 
 describe('Details2Component', () => {
     @Component({

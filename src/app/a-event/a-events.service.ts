@@ -1,5 +1,7 @@
 import { Injectable, signal } from '@angular/core';
-import { AEvent, randomAEvent, RANDOM_GENERATED_EVENTS } from './models';
+import { AEvent } from './a-event.model';
+import { randomAEvent } from './functions';
+import { RANDOM_GENERATED_EVENTS } from './constants';
 
 @Injectable({ providedIn: 'root' })
 export class AEventsService {
