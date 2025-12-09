@@ -28,7 +28,7 @@ export default defineConfig({
             provider: 'v8',
             reporter: ['text-summary', ['html', { subdir: 'coverage' }]],
             reportOnFailure: true,
-            reportsDirectory: 'reports/amsterdam-events',
+            reportsDirectory: 'reports',
             thresholds: {
                 branches: 80,
                 functions: 80,
@@ -40,7 +40,7 @@ export default defineConfig({
         include: ['src/**/*.spec.ts'],
         name: 'dma-resource-client',
         open: false,
-        outputFile: 'reports/amsterdam-events/index.html',
+        outputFile: 'reports/index.html',
         passWithNoTests: true,
         reporters: ['dot', 'html'],
         root: __dirname,
