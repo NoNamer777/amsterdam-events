@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AEvent, RANDOM_GENERATED_EVENTS, randomAEvent } from '../models';
+import { AEvent } from '../a-event.model';
+import { randomAEvent } from '../functions';
+import { RANDOM_GENERATED_EVENTS } from '../constants';
 
 @Component({
     selector: 'app-overview1',

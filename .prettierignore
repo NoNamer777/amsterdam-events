@@ -5,22 +5,23 @@
 !*/
 
 # and except for specific file types
-!*.css
-!*.js
 !*.json
-!*.md
-!*.scss
-!*.ts
 !*.yaml
 !*.yml
+!*.js
+!*.[cm]js
+!*.ts
+!*.[cm]ts
 !*.html
+!*.scss
+!*.css
+
+!.prettierrc
 
 ###
 
-coverage
+reports/
 .angular/
-package.json
-package-lock.json
 
 ## IDE directories
 .idea/

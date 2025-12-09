@@ -1,6 +1,6 @@
 import { AEventsService } from './a-events.service';
-import { AEvent } from './models';
 import { TestBed } from '@angular/core/testing';
+import { AEvent } from './a-event.model';
 
 describe('AEventsService', () => {
     function setupTest() {

@@ -1,26 +1,16 @@
-# Environments
-src/environments/environment.*.ts
-!src/environments/environment.test.ts
-
 # compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+dist/
+tmp/
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+node_modules/
 
 # IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+.idea/*
+!.idea/jsLinters/
+!.idea/runConfigurations/
+!.idea/prettier.xml
+!.idea/vcs.xml
 
 # Visual Studio Code
 .vscode/*
@@ -31,13 +21,8 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+.angular/
+/reports/
 **/__screenshots__/
 
 # System Files

@@ -63,26 +63,6 @@
                         "buildTarget": "amsterdam-events:build:development"
                     }
                 },
-                "test": {
-                    "builder": "@angular/build:unit-test",
-                    "options": {
-                        "buildTarget": "amsterdam-events:build:development",
-                        "coverage": true,
-                        "runner": "vitest",
-                        "runnerConfig": "vite.config.mts",
-                        "tsConfig": "tsconfig.spec.json"
-                    },
-                    "defaultConfiguration": "ci",
-                    "configurations": {
-                        "ci": {
-                            "watch": false
-                        },
-                        "dev": {
-                            "ui": true,
-                            "watch": true
-                        }
-                    }
-                },
                 "lint": {
                     "builder": "@angular-eslint/builder:lint",
                     "options": {
