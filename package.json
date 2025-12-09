@@ -9,7 +9,7 @@
     "build:dev": "npx ng build -c dev",
     "test": "npx vitest run",
     "test:dev": "npx vitest",
-    "test:reports": "npx vite preview reports",
+    "test:reports": "npx vite preview --outDir reports/coverage --open",
     "lint": "npx ng lint",
     "format:check": "npx prettier -l .",
     "format:write": "npx prettier -w ."
