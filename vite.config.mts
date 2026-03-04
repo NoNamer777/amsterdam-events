@@ -25,9 +25,9 @@ export default defineConfig({
             include: ['src/**/*.ts'],
             exclude: ['**/index.ts', 'main.ts'],
             provider: 'v8',
-            reporter: ['text-summary', ['html', { subdir: 'coverage' }]],
+            reporter: ['text-summary', ['html', { subdir: '.' }]],
             reportOnFailure: true,
-            reportsDirectory: 'reports',
+            reportsDirectory: 'reports/coverage',
             thresholds: {
                 branches: 80,
                 functions: 80,
