@@ -29,6 +29,7 @@ reports/
 
 ## Imported source
 node_modules/
+pnpm-lock.yaml
 
 ## Output directories
 dist/
