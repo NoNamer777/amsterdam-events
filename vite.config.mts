@@ -16,7 +16,6 @@ export default defineConfig({
             headless: true,
             instances: [{ browser: 'chromium' }],
             provider: playwright(),
-            ui: true,
         },
         clearMocks: true,
         coverage: {
@@ -26,9 +25,9 @@ export default defineConfig({
             include: ['src/**/*.ts'],
             exclude: ['**/index.ts', 'main.ts'],
             provider: 'v8',
-            reporter: ['text-summary', ['html', { subdir: 'coverage' }]],
+            reporter: ['text-summary', ['html', { subdir: '.' }]],
             reportOnFailure: true,
-            reportsDirectory: 'reports',
+            reportsDirectory: 'reports/coverage',
             thresholds: {
                 branches: 80,
                 functions: 80,
@@ -42,12 +41,11 @@ export default defineConfig({
         open: false,
         outputFile: 'reports/index.html',
         passWithNoTests: true,
-        reporters: ['dot', 'html'],
+        reporters: ['dot', 'html', ...(isCI ? ['github-actions'] : [])],
         root: __dirname,
         setupFiles: ['test/setup-test.ts'],
         sequence: {
             shuffle: true,
         },
-        ui: !isCI,
     },
 });
