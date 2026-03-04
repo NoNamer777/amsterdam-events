@@ -41,7 +41,7 @@ export default defineConfig({
         open: false,
         outputFile: 'reports/index.html',
         passWithNoTests: true,
-        reporters: ['dot', 'html'],
+        reporters: ['dot', 'html', ...(isCI ? ['github-actions'] : [])],
         root: __dirname,
         setupFiles: ['test/setup-test.ts'],
         sequence: {
