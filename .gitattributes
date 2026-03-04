@@ -1,0 +1,52 @@
+# Handle line endings automatically for files detected as text
+# and leave binary files untouched.
+* text=auto eol=lf
+
+# Standard JavaScript / TypeScript patterns
+*.js      text
+*.ts      text
+
+# Angular / HTML / Styles
+*.html    text
+*.scss    text
+*.css     text
+*.json    text
+*.svg     text
+
+# pnpm Lockfile (Ensures it is treated as a text file for diffs)
+pnpm-lock.yaml  text eol=lf linguist-generated=true
+
+# Tooling Configurations
+.tool-versions  text eol=lf
+.editorconfig   text eol=lf
+.prettierrc     text eol=lf
+eslint.config.js text eol=lf
+
+# Vitest and Testing
+# Ensures that snapshots or test assets are handled correctly
+*.spec.ts       text
+
+# GitHub Actions
+.github/workflows/*.yaml text eol=lf
+
+# Documentation
+*.md      text
+
+# Binary files
+*.png     binary
+*.jpg     binary
+*.JPG     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.pdf     binary
+*.woff    binary
+*.woff2   binary
+
+###############################################################################
+# LINGUIST CUSTOMIZATION
+# These settings help GitHub's language statistics ignore generated/tool files
+###############################################################################
+
+# Mark generated files to clean up GitHub diffs
+pnpm-lock.yaml    linguist-generated=true
