@@ -16,7 +16,6 @@ export default defineConfig({
             headless: true,
             instances: [{ browser: 'chromium' }],
             provider: playwright(),
-            ui: true,
         },
         clearMocks: true,
         coverage: {
@@ -48,6 +47,5 @@ export default defineConfig({
         sequence: {
             shuffle: true,
         },
-        ui: !isCI,
     },
 });
