@@ -7,7 +7,7 @@
     "start": "pnpm exec ng serve",
     "build": "pnpm exec ng build",
     "build:dev": "pnpm exec ng build -c dev",
-    "test:install-browser": "pnpm exec playwright install chromium",
+    "test:install-browsers": "pnpm exec playwright install chromium",
     "test": "pnpm exec vitest run",
     "test:dev": "pnpm exec vitest --ui",
     "test:reports": "pnpm exec vite preview --outDir reports/coverage --open",
