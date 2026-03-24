@@ -1,0 +1,38 @@
+version: 2
+updates:
+    - package-ecosystem: 'npm'
+      directory: '/'
+      schedule:
+          interval: 'daily'
+      versioning-strategy: lockfile-only
+      open-pull-requests-limit: 0
+
+      groups:
+          # Group all Angular core packages together
+          angular-core:
+              patterns:
+                  - '@angular/*'
+                  - '@angular-eslint/*'
+                  - 'angular-eslint'
+
+          # Group AnalogJS and Vite-related tooling
+          analog-vite-stack:
+              patterns:
+                  - '@analogjs/*'
+                  - 'vite*'
+                  - 'vitest*'
+                  - '@vitest/*'
+
+          # Group Linting and Formatting tools
+          lint-format:
+              patterns:
+                  - 'eslint*'
+                  - 'prettier*'
+                  - 'typescript-eslint'
+                  - '@eslint/*'
+
+          # Group Test Runners (Playwright)
+          testing-infrastructure:
+              patterns:
+                  - 'playwright'
+                  - '@playwright/*'
