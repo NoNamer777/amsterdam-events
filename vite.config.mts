@@ -1,16 +1,15 @@
 /// <reference types="vitest/config" />
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vite';
-import angular from '@analogjs/vite-plugin-angular';
-import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 const isCI = Boolean(process.env['CI']);
 const __dirname = import.meta.dirname;
 
 export default defineConfig({
-    plugins: [angular(), viteTsConfigPaths()],
+    resolve: {
+        tsconfigPaths: true,
+    },
     test: {
-        allowOnly: !isCI,
         browser: {
             enabled: true,
             headless: true,
@@ -19,15 +18,12 @@ export default defineConfig({
         },
         clearMocks: true,
         coverage: {
-            clean: true,
-            cleanOnRerun: true,
             enabled: true,
-            include: ['src/**/*.ts'],
-            exclude: ['**/index.ts', 'main.ts'],
+            exclude: ['**/index.ts', 'main.ts', '**/config/*.ts'],
             provider: 'v8',
             reporter: ['text-summary', ['html', { subdir: '.' }]],
             reportOnFailure: true,
-            reportsDirectory: 'reports/coverage',
+            reportsDirectory: 'coverage/amsterdam-events',
             thresholds: {
                 branches: 80,
                 functions: 80,
@@ -36,14 +32,15 @@ export default defineConfig({
             },
         },
         globals: true,
-        include: ['src/**/*.spec.ts'],
-        name: 'dma-resource-client',
+        name: 'amsterdam-events',
         open: false,
-        outputFile: 'reports/index.html',
         passWithNoTests: true,
-        reporters: ['dot', 'html', ...(isCI ? ['github-actions'] : [])],
+        reporters: [
+            'dot',
+            ['html', { outputFile: 'reports/amsterdam-events/index.html' }],
+            ...(isCI ? ['github-actions'] : []),
+        ],
         root: __dirname,
-        setupFiles: ['test/setup-test.ts'],
         sequence: {
             shuffle: true,
         },

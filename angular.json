@@ -68,6 +68,27 @@
                     "options": {
                         "lintFilePatterns": ["src/**/*.html", "src/**/*.ts"]
                     }
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "buildTarget": "amsterdam-events:build",
+                        "coverage": true,
+                        "coverageInclude": ["src/**/*.ts"],
+                        "runner": "vitest",
+                        "runnerConfig": "vite.config.mts",
+                        "tsConfig": "tsconfig.spec.json"
+                    },
+                    "defaultConfiguration": "ci",
+                    "configurations": {
+                        "ci": {
+                            "watch": false
+                        },
+                        "development": {
+                            "watch": true,
+                            "ui": true
+                        }
+                    }
                 }
             }
         }
