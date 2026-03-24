@@ -21,6 +21,7 @@
 ###
 
 reports/
+coverage/
 .angular/
 
 ## IDE directories
