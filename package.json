@@ -10,7 +10,6 @@
     "test:install-browsers": "pnpm exec playwright install chromium",
     "test": "pnpm exec vitest run",
     "test:dev": "pnpm exec vitest --ui",
-    "test:reports": "pnpm exec vite preview --outDir reports/coverage --open",
     "lint": "pnpm exec ng lint",
     "format:check": "pnpm exec prettier -l .",
     "format:write": "pnpm exec prettier -w ."
