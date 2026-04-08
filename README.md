@@ -1,27 +1,102 @@
-# AmsterdamEvents
+# Amsterdam Events
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+An Angular application for browsing and managing Amsterdam events.
+
+## Prerequisites
+
+This project uses [mise](https://mise.jdx.dev) to manage the Node.js and pnpm versions defined in `package.json`. Tool versions are read directly from the package manifest — no separate mise config file is needed.
+
+### 1. Install mise
+
+Follow the [mise installation guide](https://mise.jdx.dev/installing-mise.html) for your platform.
+
+### 2. Enable package manifest support
+
+Mise needs to be configured to read tool versions from `package.json` for Node.js, npm, and pnpm. Run these commands once globally:
+
+```bash
+mise settings add idiomatic_version_file_enable_tools node
+mise settings add idiomatic_version_file_enable_tools npm
+mise settings add idiomatic_version_file_enable_tools pnpm
+```
+
+### 3. Disable Corepack
+
+Corepack conflicts with mise's package manager shims and must be disabled:
+
+```bash
+corepack disable
+```
+
+## Getting started
+
+Install the required tools and dependencies:
+
+```bash
+mise install
+pnpm install
+```
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+pnpm start
+```
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Navigate to `http://localhost:4200/`. The app reloads automatically when source files change.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+# Production build
+pnpm build
 
-## Running unit tests
+# Development build
+pnpm build:dev
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Build output is written to the `dist/` directory.
 
-## Running end-to-end tests
+## Testing
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```sh
+# Install browser binaries (first time only or after the @playwright/test package has upgraded)
+pnpm test:install-browsers
+
+# Run tests
+pnpm test
+
+# Run tests in development configuration
+pnpm test:dev
+```
+
+Tests run in the browser via [Vitest](https://vitest.dev) and [Playwright](https://playwright.dev).
+
+## Linting and formatting
+
+```bash
+# Lint
+pnpm lint
+
+# Check formatting
+pnpm format:check
+
+# Fix formatting
+pnpm format:write
+```
+
+## Code scaffolding
+
+Use the Angular CLI to generate new components and other constructs:
+
+```bash
+pnpm ng g|generate c|component component-name
+pnpm ng g d|directive directive-name
+pnpm ng g s|service service-name
+pnpm ng g g|guard guard-name
+pnpm ng g p|pipe pipe-name
+```
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+See the [Angular CLI documentation](https://angular.dev/tools/cli) for a full command reference.
