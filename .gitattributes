@@ -17,7 +17,6 @@
 pnpm-lock.yaml  text eol=lf linguist-generated=true
 
 # Tooling Configurations
-.tool-versions  text eol=lf
 .editorconfig   text eol=lf
 .prettierrc     text eol=lf
 eslint.config.js text eol=lf
