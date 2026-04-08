@@ -1,5 +1,5 @@
 packages:
-  - '!dist/**/*'
+    - '!dist/**/*'
 blockExoticSubdeps: true
 ignoreDepScripts: true
 managePackageManagerVersions: false
