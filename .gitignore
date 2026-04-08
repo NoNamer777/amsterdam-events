@@ -6,11 +6,7 @@ tmp/
 node_modules/
 
 # IDEs and editors
-.idea/*
-!.idea/jsLinters/
-!.idea/runConfigurations/
-!.idea/prettier.xml
-!.idea/vcs.xml
+.idea/
 
 # Visual Studio Code
 .vscode/*
