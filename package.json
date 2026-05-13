@@ -15,7 +15,7 @@
     "format:check": "pnpm exec prettier -l .",
     "format:write": "pnpm exec prettier -w ."
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@11.1.1",
   "engines": {
     "node": "~24.15"
   },
@@ -28,8 +28,13 @@
     "packageManager": [
       {
         "name": "pnpm",
-        "version": "10.33.0",
+        "version": "11.1.1",
         "onFail": "error"
+      },
+      {
+        "name": "npm",
+        "version": "11.12.1",
+        "onFail": "warn"
       }
     ]
   },
