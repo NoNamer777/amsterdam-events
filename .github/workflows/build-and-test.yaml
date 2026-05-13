@@ -29,7 +29,7 @@ jobs:
 
             - name: Install dependencies
               shell: bash
-              run: pnpm install --frozen-lockfile
+              run: pnpm install
 
             - name: Check formatting
               shell: bash
@@ -37,7 +37,7 @@ jobs:
 
             - name: Check linting
               shell: bash
-              run: pnpm lint
+              run: pnpm lint:eslint
 
             - name: Compiling app
               shell: bash
@@ -46,5 +46,5 @@ jobs:
             - name: Run tests
               shell: bash
               run: |
-                  pnpm test:install-browsers
+                  pnpm playwright:install
                   pnpm test
