@@ -4,16 +4,15 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "ng": "pnpm exec ng",
-    "start": "pnpm exec ng serve",
-    "build": "pnpm exec ng build",
-    "build:dev": "pnpm exec ng build -c dev",
-    "test:install-browsers": "pnpm exec playwright install chromium",
-    "test": "pnpm exec ng test",
-    "test:dev": "pnpm exec ng test -c development",
-    "lint": "pnpm exec ng lint",
-    "format:check": "pnpm exec prettier -l .",
-    "format:write": "pnpm exec prettier -w ."
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "playwright:install": "playwright install chromium",
+    "test": "ng test",
+    "test:dev": "ng test -c development",
+    "lint:eslint": "ng lint",
+    "format:check": "prettier -l .",
+    "format:write": "prettier -w ."
   },
   "packageManager": "pnpm@11.1.1",
   "engines": {
