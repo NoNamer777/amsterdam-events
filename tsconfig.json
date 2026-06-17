@@ -3,7 +3,6 @@
     "files": [],
     "compileOnSave": false,
     "compilerOptions": {
-        "baseUrl": "./",
         "declaration": false,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
