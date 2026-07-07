@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="playwright:install" type="js.build_tools.npm" folderName="test">
+  <configuration default="false" name="format" type="js.build_tools.npm" folderName="formatting">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="playwright:install" />
+      <script value="format" />
     </scripts>
     <node-interpreter value="project" />
     <package-manager value="pnpm" />

@@ -33,11 +33,11 @@ jobs:
 
             - name: Check formatting
               shell: bash
-              run: pnpm format:check
+              run: pnpm format-check
 
             - name: Check linting
               shell: bash
-              run: pnpm lint:eslint
+              run: pnpm lint-ts
 
             - name: Compiling app
               shell: bash
@@ -46,5 +46,5 @@ jobs:
             - name: Run tests
               shell: bash
               run: |
-                  pnpm playwright:install
-                  pnpm test
+                  pnpm playwright-install
+                  pnpm test-ci

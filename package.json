@@ -7,12 +7,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "playwright:install": "playwright install chromium",
-    "test": "ng test",
-    "test:dev": "ng test -c development",
-    "lint:eslint": "ng lint",
-    "format:check": "prettier -l .",
-    "format:write": "prettier -w ."
+    "playwright-install": "playwright install chromium",
+    "test-ci": "ng test",
+    "test": "ng test -c development",
+    "lint-ts": "ng lint",
+    "format-check": "prettier -l .",
+    "format": "prettier -w ."
   },
   "packageManager": "pnpm@10.34.1",
   "engines": {
