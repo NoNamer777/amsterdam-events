@@ -1,0 +1,21 @@
+name: Pull request
+on:
+    pull_request:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.number }}
+    cancel-in-progress: true
+
+jobs:
+    ci:
+        name: CI
+        runs-on: ubuntu-22.04
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+            - name: Run CI checks
+              uses: ./.github/actions/ci

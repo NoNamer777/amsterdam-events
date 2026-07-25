@@ -1,0 +1,26 @@
+name: CI
+description: Runs CI checks
+
+runs:
+    using: composite
+    steps:
+        - name: Prepare workspace
+          uses: ./.github/actions/prepare-workspace
+
+        - name: Check formatting
+          shell: bash
+          run: pnpm format-check
+
+        - name: Check linting
+          shell: bash
+          run: pnpm lint-ts
+
+        - name: Compiling app
+          shell: bash
+          run: pnpm build
+
+        - name: Run tests
+          shell: bash
+          run: |
+              pnpm playwright-install
+              pnpm test-ci
