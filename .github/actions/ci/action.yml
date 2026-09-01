@@ -7,6 +7,10 @@ runs:
         - name: Prepare workspace
           uses: ./.github/actions/prepare-workspace
 
+        - name: Install Playwright browsers
+          shell: bash
+          run: pnpm playwright-install
+
         - name: Check formatting
           shell: bash
           run: pnpm format-check
@@ -21,6 +25,4 @@ runs:
 
         - name: Run tests
           shell: bash
-          run: |
-              pnpm playwright-install
-              pnpm test-ci
+          run: pnpm test-ci

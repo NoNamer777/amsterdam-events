@@ -4,28 +4,27 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "ng": "ng",
+    "playwright-install": "playwright install chromium --with-deps",
     "start": "ng serve",
     "build": "ng build",
-    "playwright-install": "playwright install chromium",
-    "test-ci": "ng test",
-    "test": "ng test -c development",
-    "lint-ts": "ng lint",
+    "test-ci": "ng test -c ci",
+    "test": "ng test",
+    "format": "prettier -w .",
     "format-check": "prettier -l .",
-    "format": "prettier -w ."
+    "lint-ts": "ng lint"
   },
   "engines": {
-    "node": "~24.18"
+    "node": ">=24"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "~24.18",
+      "version": "24.20.0",
       "onFail": "error"
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "11.20.0",
+      "version": "11.24.0",
       "onFail": "error"
     }
   },

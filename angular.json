@@ -30,6 +30,7 @@
                         "browser": "src/main.ts",
                         "inlineStyleLanguage": "scss",
                         "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
+                        "sourceMap": true,
                         "styles": ["src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
                         "tsConfig": "tsconfig.app.json"
                     },
@@ -52,8 +53,7 @@
                         "development": {
                             "extractLicenses": false,
                             "namedChunks": true,
-                            "optimization": false,
-                            "sourceMap": true
+                            "optimization": false
                         }
                     }
                 },
@@ -72,21 +72,30 @@
                 "test": {
                     "builder": "@angular/build:unit-test",
                     "options": {
-                        "buildTarget": "amsterdam-events:build",
+                        "browsers": ["chromium"],
                         "coverage": true,
-                        "coverageInclude": ["src/**/*.ts"],
-                        "runner": "vitest",
-                        "runnerConfig": "vite.config.mts",
-                        "tsConfig": "tsconfig.spec.json"
+                        "coverageInclude": ["src/app/**/*.{ts,html}"],
+                        "coverageExclude": ["**/index.ts", "**/config/**/*.ts"],
+                        "coverageReporters": [["html", { "subdir": "." }], "text-summary"],
+                        "coverageThresholds": {
+                            "branches": 80,
+                            "functions": 80,
+                            "lines": 80,
+                            "statements": 80
+                        },
+                        "headless": true,
+                        "include": ["**/*.spec.ts"],
+                        "isolate": true,
+                        "reporters": [["html", { "outputFile": "reports/index.html" }], "dot"],
+                        "runnerConfig": "vitest.config.mts",
+                        "ui": true,
+                        "watch": true
                     },
-                    "defaultConfiguration": "ci",
                     "configurations": {
                         "ci": {
+                            "reporters": [["html", { "outputFile": "reports/index.html" }], "dot", "github-actions"],
+                            "ui": false,
                             "watch": false
-                        },
-                        "development": {
-                            "watch": true,
-                            "ui": true
                         }
                     }
                 }
