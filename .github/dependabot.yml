@@ -4,41 +4,49 @@ updates:
       directory: '/'
       schedule:
           interval: 'daily'
-      open-pull-requests-limit: 0
+
+      # One PR for all minor/patch action bumps; majors get their own PR each.
+      groups:
+          actions:
+              patterns:
+                  - '*'
+              update-types:
+                  - 'minor'
+                  - 'patch'
 
     - package-ecosystem: 'npm'
       directory: '/'
       schedule:
           interval: 'daily'
-      versioning-strategy: lockfile-only
-      open-pull-requests-limit: 0
+      open-pull-requests-limit: 20
 
+      # Groups mirror the named catalogs in pnpm-workspace.yaml: a bump for a
+      # version-locked family lands as one PR editing that family's catalog.
+      # Locked families group every update type (a major must move as one unit);
+      # the default catalog groups only minor/patch and splits majors into their
+      # own per-package PRs.
       groups:
-          # Group all Angular core packages together
-          angular-core:
+          # catalog: angular (+ catalog: angular-cli)
+          angular:
               patterns:
                   - '@angular/*'
+
+          # catalog: angular-eslint
+          angular-eslint:
+              patterns:
                   - '@angular-eslint/*'
                   - 'angular-eslint'
 
-          # Group AnalogJS and Vite-related tooling
-          analog-vite-stack:
+          # catalog: vitest
+          vitest:
               patterns:
-                  - '@analogjs/*'
-                  - 'vite*'
-                  - 'vitest*'
                   - '@vitest/*'
+                  - 'vitest'
 
-          # Group Linting and Formatting tools
-          lint-format:
+          # default catalog: everything not in a version-locked family
+          default-catalog:
               patterns:
-                  - 'eslint*'
-                  - 'prettier*'
-                  - 'typescript-eslint'
-                  - '@eslint/*'
-
-          # Group Test Runners (Playwright)
-          testing-infrastructure:
-              patterns:
-                  - 'playwright'
-                  - '@playwright/*'
+                  - '*'
+              update-types:
+                  - 'minor'
+                  - 'patch'
