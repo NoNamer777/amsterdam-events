@@ -8,7 +8,7 @@ export default defineConfig({
     test: {
         browser: {
             provider: playwright(),
-            screenshotFailures: false
+            screenshotFailures: false,
         },
         clearMocks: true,
         coverage: {
