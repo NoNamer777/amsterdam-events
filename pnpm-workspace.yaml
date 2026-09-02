@@ -22,7 +22,7 @@ savePrefix: '~'
 # Independently versioned packages
 catalog:
     '@eslint/js': ~10.0.1
-    '@types/node': ~24.13.3
+    '@types/node': ~25.9.5
     bootstrap: ~5.3.8
     eslint: ~10.9.1
     eslint-config-prettier: ~10.1.8
