@@ -49,6 +49,7 @@
     "@types/node": "catalog:",
     "@vitest/browser-playwright": "catalog:vitest",
     "@vitest/coverage-v8": "catalog:vitest",
+    "@vitest/expect": "catalog:vitest",
     "@vitest/ui": "catalog:vitest",
     "angular-eslint": "catalog:angular-eslint",
     "eslint": "catalog:",
