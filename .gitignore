@@ -18,6 +18,7 @@ node_modules/
 
 # Miscellaneous
 .angular/
+.vitest/
 reports/
 coverage/
 **/__screenshots__/
