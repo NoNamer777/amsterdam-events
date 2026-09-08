@@ -14,7 +14,6 @@ export default defineConfig({
         coverage: {
             provider: 'v8',
             reportOnFailure: true,
-            reportsDirectory: 'coverage/amsterdam-events',
         },
         globals: true,
         name: 'amsterdam-events',
