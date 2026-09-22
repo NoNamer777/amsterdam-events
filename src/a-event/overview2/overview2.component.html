@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        @if (isEventSelected()) {
+        @if (selectedEvent !== undefined) {
             <app-details2
                 class="col event-details"
                 [selectedEvent]="selectedEvent"

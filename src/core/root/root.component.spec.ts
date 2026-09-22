@@ -23,8 +23,8 @@ describe('RootComponent', () => {
         };
     }
 
-    it('should be defined', async () => {
+    it('should render', async () => {
         const { harness } = await setupTest();
-        expect(harness).not.toBeNull();
+        expect(harness).toBeDefined();
     });
 });

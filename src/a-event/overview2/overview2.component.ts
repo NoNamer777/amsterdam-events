@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AEvent } from '../a-event.model';
 import { RANDOM_GENERATED_EVENTS } from '../constants';
 import { Details2Component } from '../details2/details2.component';
@@ -7,11 +7,10 @@ import { randomAEvent } from '../functions';
 @Component({
     selector: 'app-overview2',
     templateUrl: './overview2.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [Details2Component],
 })
 export class Overview2Component implements OnInit {
-    protected selectedEvent: AEvent = null;
+    protected selectedEvent: AEvent | undefined;
 
     protected events: AEvent[] = [];
 
@@ -20,7 +19,7 @@ export class Overview2Component implements OnInit {
         this.randomEvents();
     }
 
-    protected onAddEvent(): void {
+    protected onAddEvent() {
         const event = randomAEvent();
         this.events.push(event);
         this.onSelectEvent(event);
@@ -30,7 +29,7 @@ export class Overview2Component implements OnInit {
      * Selects an event.
      * @param event The event that is selected.
      */
-    protected onSelectEvent(event: AEvent): void {
+    protected onSelectEvent(event: AEvent) {
         if (event.id === this.selectedEvent?.id) {
             return;
         }
@@ -38,23 +37,20 @@ export class Overview2Component implements OnInit {
         this.selectedEvent = event.clone();
     }
 
-    protected onEventUpdated(newEvent: AEvent): void {
+    protected onEventUpdated(newEvent: AEvent) {
         this.events = this.events.map((oldEvent) => (oldEvent.id === newEvent.id ? newEvent : oldEvent));
     }
 
-    protected onEventRemoved(eventId: number): void {
+    protected onEventRemoved(eventId: number) {
         this.events = this.events.filter((event) => event.id !== eventId);
-        this.selectedEvent = null;
+        this.selectedEvent = undefined;
     }
 
     /**
      * Checks whether any event has been selected, or whether the event
      * that has been passed through to the function has been selected.
      */
-    protected isEventSelected(event?: AEvent): boolean {
-        // When event is `null` check whether any event has been selected.
-        if (!event) return this.selectedEvent !== null;
-
+    protected isEventSelected(event: AEvent) {
         // Otherwise, check if event is the same as the selected event.
         return event.id === this.selectedEvent?.id;
     }

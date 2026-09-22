@@ -1,4 +1,4 @@
-import { AEventStatuses } from './a-event-status.model';
+import { AEventStatus, AEventStatuses } from './a-event-status.model';
 import { AEvent } from './a-event.model';
 import {
     BASE_YEAR,
@@ -10,25 +10,11 @@ import {
     MAX_YEAR_OFFSET,
 } from './constants';
 
-export function randomAEvent(): AEvent {
-    const newEvent = new AEvent();
-
-    newEvent.title = `The Fantastic event-${newEvent.id}`;
-    newEvent.status = randomAEventStatus();
-    newEvent.start = randomDate();
-    newEvent.end = randomDate(newEvent.start);
-    newEvent.hasTickets = Math.random() >= 0.5;
-    newEvent.participationFee = newEvent.hasTickets ? Math.floor(Math.random() * MAX_EVENT_PARTICIPATION_FEE) : 0;
-    newEvent.maxParticipants = newEvent.hasTickets ? Math.floor(Math.random() * MAX_EVENT_PARTICIPANTS) : 0;
-
-    return newEvent;
-}
-
-function randomAEventStatus() {
+function randomAEventStatus(): AEventStatus {
     const statuses = Object.values(AEventStatuses);
-    const rndNum = Math.floor(Math.random() * statuses.length);
+    const rndNum = Math.floor(Math.random() * statuses.length - 1);
 
-    return statuses[rndNum];
+    return statuses[rndNum]!;
 }
 
 function randomDate(before?: Date) {
@@ -41,4 +27,17 @@ function randomDate(before?: Date) {
 
     if (before && generatedDate < before) return randomDate(before);
     return generatedDate;
+}
+
+export function randomAEvent(): AEvent {
+    const newEvent = new AEvent();
+
+    newEvent.title = `The Fantastic event-${newEvent.id}`;
+    newEvent.status = randomAEventStatus();
+    newEvent.start = randomDate();
+    newEvent.end = randomDate(newEvent.start);
+    newEvent.hasTickets = Math.random() >= 0.5;
+    newEvent.participationFee = newEvent.hasTickets ? Math.floor(Math.random() * MAX_EVENT_PARTICIPATION_FEE) : 0;
+    newEvent.maxParticipants = newEvent.hasTickets ? Math.floor(Math.random() * MAX_EVENT_PARTICIPANTS) : 0;
+    return newEvent;
 }

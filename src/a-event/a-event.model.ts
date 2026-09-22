@@ -5,21 +5,21 @@ export class AEvent {
 
     public readonly id: number;
 
-    public title: string;
+    public title!: string;
 
-    public start: Date;
+    public start!: Date;
 
-    public end: Date;
+    public end!: Date;
 
-    public description: string;
+    public description!: string;
 
-    public status: AEventStatus;
+    public status!: AEventStatus;
 
-    public hasTickets: boolean;
+    public hasTickets!: boolean;
 
-    public participationFee: number;
+    public participationFee!: number;
 
-    public maxParticipants: number;
+    public maxParticipants!: number;
 
     public constructor(id?: number) {
         this.id = id ? id : AEvent.nextId++;

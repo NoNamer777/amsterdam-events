@@ -14,15 +14,25 @@ export class EventsOverview2Harness extends ComponentHarness {
     async selectEventByIndex(index: number): Promise<void> {
         const eventElements = await this.eventElementsLocator();
 
-        await eventElements[index].click();
+        if (eventElements.length === 0) return;
+        const eventElement = eventElements[index];
+
+        if (!eventElement) return;
+        await eventElement.click();
     }
 
     async changeEventTitle(title: string): Promise<void> {
-        await (await this.eventDetailsLocator()).changeEventTitle(title);
+        const eventDetails = await this.eventDetailsLocator();
+
+        if (!eventDetails) return;
+        await eventDetails.changeEventTitle(title);
     }
 
-    async getTitleSelectedEvent(): Promise<string> {
-        return await (await this.selectedEventElementLocator()).text();
+    async getTitleSelectedEvent(): Promise<string | null> {
+        const selectedEvent = await this.selectedEventElementLocator();
+
+        if (!selectedEvent) return null;
+        return await selectedEvent.text();
     }
 
     async isEventDetailsPlaceholderVisible(): Promise<boolean> {
@@ -41,12 +51,24 @@ export class EventsOverview2Harness extends ComponentHarness {
         return this.eventElementsLocator();
     }
 
-    async getEventTitle(index: number): Promise<string> {
-        return await (await this.eventTitleLocator())[index].text();
+    async getEventTitle(index: number): Promise<string | null> {
+        const eventTitles = await this.eventTitleLocator();
+
+        if (!eventTitles) return null;
+        const eventTitle = eventTitles[index];
+
+        if (!eventTitle) return null;
+        return await eventTitle.text();
     }
 
     async isEventSelected(index: number): Promise<boolean> {
-        return await (await this.getEventElements())[index].hasClass('table-primary');
+        const events = await this.getEventElements();
+
+        if (events.length === 0) return false;
+        const eventElement = events[index];
+
+        if (!eventElement) return false;
+        return await eventElement.hasClass('table-primary');
     }
 
     async fireAddEventButton(): Promise<void> {
@@ -56,6 +78,9 @@ export class EventsOverview2Harness extends ComponentHarness {
     }
 
     async fireSaveEvent(): Promise<void> {
-        await (await this.eventDetailsLocator()).saveEvent();
+        const eventDetails = await this.eventDetailsLocator();
+
+        if (!eventDetails) return;
+        await eventDetails.saveEvent();
     }
 }

@@ -5,7 +5,7 @@ import { randomAEvent } from './functions';
 
 @Injectable({ providedIn: 'root' })
 export class AEventsService {
-    private events = signal<AEvent[]>([]);
+    private readonly events = signal<AEvent[]>([]);
 
     public constructor() {
         AEvent.nextId = 1;
@@ -64,10 +64,11 @@ export class AEventsService {
      * and return the removed instance
      * @param id The ID of the AEvent to remove.
      */
-    public remove(id: number): AEvent {
+    public remove(id: number): AEvent | undefined {
         const index = this.events().indexOf(this.getById(id));
         const removed = this.events()[index];
 
+        if (removed === undefined) return undefined;
         this.events.update((events) => events.filter((event) => event.id !== removed.id));
         return removed;
     }

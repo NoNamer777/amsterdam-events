@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AEvent } from '../a-event.model';
 import { RANDOM_GENERATED_EVENTS } from '../constants';
 import { randomAEvent } from '../functions';
@@ -6,7 +6,6 @@ import { randomAEvent } from '../functions';
 @Component({
     selector: 'app-overview1',
     templateUrl: './overview1.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Overview1Component implements OnInit {
     protected events: AEvent[] = [];
@@ -15,15 +14,15 @@ export class Overview1Component implements OnInit {
         this.randomEvents();
     }
 
-    protected getParticipationFee(event: AEvent): string {
+    protected getParticipationFee(event: AEvent) {
         return event.hasTickets ? `€${event.participationFee}` : '';
     }
 
-    protected getMaxParticipants(event: AEvent): string {
+    protected getMaxParticipants(event: AEvent) {
         return event.maxParticipants ? `${event.maxParticipants}` : '';
     }
 
-    protected onAddEvent(): void {
+    protected onAddEvent() {
         this.events.push(randomAEvent());
     }
 

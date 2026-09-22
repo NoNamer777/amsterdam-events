@@ -23,11 +23,11 @@ describe('Details2Component', () => {
             this.event.title = 'Test event';
         }
 
-        onEventChanged(): void {
+        public onEventChanged(): void {
             this.eventChangedEmits++;
         }
 
-        onEventDeleted(): void {
+        public onEventDeleted(): void {
             this.eventDeletedEmits++;
         }
     }

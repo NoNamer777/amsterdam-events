@@ -2,60 +2,78 @@ import { ComponentHarness, TestElement } from '@angular/cdk/testing';
 import { EventsDetails2Harness } from './events-details2.harness';
 
 export class EventsOverview2Harness extends ComponentHarness {
-    static hostSelector = 'app-overview2';
+    public static readonly hostSelector = 'app-overview2';
 
-    private eventElementsLocator = this.locatorForAll('tr.event-title');
-    private eventTitleLocator = this.locatorForAll('tr.event-title td');
-    private selectedEventElementLocator = this.locatorForOptional(`tr.event-title.table-primary td`);
-    private eventDetailsPlaceholderLocator = this.locatorForOptional('.event-details-placeholder');
-    private eventDetailsLocator = this.locatorForOptional(EventsDetails2Harness);
-    private addEventButtonLocator = this.locatorFor('button.add-event');
+    private readonly eventElementsLocator = this.locatorForAll('tr.event-title');
+    private readonly eventTitleLocator = this.locatorForAll('tr.event-title td');
+    private readonly selectedEventElementLocator = this.locatorForOptional(`tr.event-title.table-primary td`);
+    private readonly eventDetailsPlaceholderLocator = this.locatorForOptional('.event-details-placeholder');
+    private readonly eventDetailsLocator = this.locatorForOptional(EventsDetails2Harness);
+    private readonly addEventButtonLocator = this.locatorFor('button.add-event');
 
-    async selectEventByIndex(index: number): Promise<void> {
-        const eventElements = await this.eventElementsLocator();
+    public async selectEventByIndex(index: number): Promise<void> {
+        const events = await this.eventElementsLocator();
 
-        await eventElements[index].click();
+        if (events.length === 0) return;
+        const event = events[index];
+
+        if (!event) return;
+        await event.click();
     }
 
-    async changeEventTitle(title: string): Promise<void> {
-        await (await this.eventDetailsLocator()).changeEventTitle(title);
+    public async changeEventTitle(title: string): Promise<void> {
+        const eventDetails = await this.eventDetailsLocator();
+
+        if (!eventDetails) return;
+        await eventDetails.changeEventTitle(title);
     }
 
-    async getTitleSelectedEvent(): Promise<string> {
-        return await (await this.selectedEventElementLocator()).text();
+    public async getTitleSelectedEvent(): Promise<string | null> {
+        const selectedEvent = await this.selectedEventElementLocator();
+
+        if (!selectedEvent) return null;
+        return await selectedEvent.text();
     }
 
-    async isEventDetailsPlaceholderVisible(): Promise<boolean> {
+    public async isEventDetailsPlaceholderVisible(): Promise<boolean> {
         return (await this.eventDetailsPlaceholderLocator()) !== null;
     }
 
-    async isEventDetailsVisible(): Promise<boolean> {
+    public async isEventDetailsVisible(): Promise<boolean> {
         return (await this.eventDetailsLocator()) !== null;
     }
 
-    async hasEventSelected(): Promise<boolean> {
+    public async hasEventSelected(): Promise<boolean> {
         return (await this.selectedEventElementLocator()) !== null;
     }
 
-    async getEventElements(): Promise<TestElement[]> {
+    public async getEventElements(): Promise<TestElement[]> {
         return this.eventElementsLocator();
     }
 
-    async getEventTitle(index: number): Promise<string> {
-        return await (await this.eventTitleLocator())[index].text();
+    public async getEventTitle(index: number): Promise<string | null> {
+        const eventTitles = await this.eventTitleLocator();
+
+        if (eventTitles.length === 0) return null;
+        const eventTitle = eventTitles[index];
+
+        if (!eventTitle) return null;
+        return await eventTitle.text();
     }
 
-    async isEventSelected(index: number): Promise<boolean> {
-        return await (await this.getEventElements())[index].hasClass('table-primary');
+    public async isEventSelected(index: number): Promise<boolean> {
+        const events = await this.getEventElements();
+
+        if (events.length === 0) return false;
+        const event = events[index];
+
+        if (!event) return false;
+        return await event.hasClass('table-primary');
     }
 
-    async fireAddEventButton(): Promise<void> {
+    public async fireAddEventButton(): Promise<void> {
         const addEventButton = await this.addEventButtonLocator();
 
         await addEventButton.click();
-    }
-
-    async fireSaveEvent(): Promise<void> {
-        await (await this.eventDetailsLocator()).saveEvent();
     }
 }
