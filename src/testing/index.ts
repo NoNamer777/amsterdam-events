@@ -1,1 +1,1 @@
-export * from './harnesses';
+export { setupTestEnvironment } from './utils/setup-test-environment';
