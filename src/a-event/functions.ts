@@ -1,14 +1,12 @@
 import { AEventStatus, AEventStatuses } from './a-event-status.model';
 import { AEvent } from './a-event.model';
-import {
-    BASE_YEAR,
-    MAX_DAYS_PER_MONTH,
-    MAX_EVENT_PARTICIPANTS,
-    MAX_EVENT_PARTICIPATION_FEE,
-    MAX_HOURS_PER_DAY,
-    MAX_MONTHS_PER_YEAR,
-    MAX_YEAR_OFFSET,
-} from './constants';
+import { BASE_YEAR, MAX_EVENT_PARTICIPANTS, MAX_EVENT_PARTICIPATION_FEE, MAX_YEAR_OFFSET } from './constants';
+
+/** Start of the window random dates are drawn from (inclusive). */
+export const RANDOM_DATE_WINDOW_START = new Date(BASE_YEAR, 0, 1);
+
+/** End of the window random dates are drawn from (exclusive). */
+export const RANDOM_DATE_WINDOW_END = new Date(BASE_YEAR + MAX_YEAR_OFFSET, 0, 1);
 
 function randomAEventStatus(): AEventStatus {
     const statuses = Object.values(AEventStatuses);
@@ -17,16 +15,22 @@ function randomAEventStatus(): AEventStatus {
     return statuses[rndNum]!;
 }
 
-function randomDate(before?: Date) {
-    const rndDay = Math.floor(Math.random() * MAX_DAYS_PER_MONTH);
-    const rndMonth = Math.floor(Math.random() * MAX_MONTHS_PER_YEAR);
-    const rndYear = Math.floor(Math.max(BASE_YEAR, Math.floor(Math.random() * MAX_YEAR_OFFSET) + BASE_YEAR));
-    const rndHour = Math.floor(Math.random() * MAX_HOURS_PER_DAY);
+/**
+ * Returns a random date, rounded down to the hour, within the random date window.
+ *
+ * When `notBefore` is given the date is drawn from `[notBefore, window end)` directly, so
+ * the result is never earlier than `notBefore` and no retrying is needed, however close
+ * `notBefore` is to the end of the window.
+ */
+export function randomDate(notBefore?: Date): Date {
+    const from = Math.max(RANDOM_DATE_WINDOW_START.getTime(), notBefore?.getTime() ?? -Infinity);
+    const to = Math.max(from, RANDOM_DATE_WINDOW_END.getTime());
 
-    const generatedDate = new Date(rndYear, rndMonth, rndDay, rndHour);
+    const generatedDate = new Date(from + Math.random() * (to - from));
+    generatedDate.setMinutes(0, 0, 0);
 
-    if (before && generatedDate < before) return randomDate(before);
-    return generatedDate;
+    // Rounding down to the hour must never push the result before `notBefore`.
+    return generatedDate.getTime() < from ? new Date(from) : generatedDate;
 }
 
 export function randomAEvent(): AEvent {
