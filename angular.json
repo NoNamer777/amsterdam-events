@@ -75,7 +75,13 @@
                         "browsers": ["chromium"],
                         "coverage": true,
                         "coverageInclude": ["src/**/*.{ts,html}"],
-                        "coverageExclude": ["**/main.ts", "**/index.ts", "**/config/**/*.ts", "**/testing/**/*.ts"],
+                        "coverageExclude": [
+                            "**/index.html",
+                            "**/main.ts",
+                            "**/index.ts",
+                            "**/config/**/*.ts",
+                            "**/testing/**/*.ts"
+                        ],
                         "coverageReporters": ["html", "text-summary"],
                         "coverageThresholds": {
                             "branches": 80,
