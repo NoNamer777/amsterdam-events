@@ -16,7 +16,6 @@ export default defineConfig({
             reportOnFailure: true,
         },
         globals: true,
-        name: 'amsterdam-events',
         open: false,
         root: import.meta.dirname,
         sequence: {

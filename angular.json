@@ -76,7 +76,7 @@
                         "coverage": true,
                         "coverageInclude": ["src/app/**/*.{ts,html}"],
                         "coverageExclude": ["**/index.ts", "**/config/**/*.ts"],
-                        "coverageReporters": [["html", { "subdir": "." }], "text-summary"],
+                        "coverageReporters": ["html", "text-summary"],
                         "coverageThresholds": {
                             "branches": 80,
                             "functions": 80,
@@ -86,14 +86,14 @@
                         "headless": true,
                         "include": ["**/*.spec.ts"],
                         "isolate": true,
-                        "reporters": [["html", { "outputFile": "reports/index.html" }], "dot"],
+                        "reporters": ["html", "dot"],
                         "runnerConfig": "vitest.config.ts",
                         "ui": true,
                         "watch": true
                     },
                     "configurations": {
                         "ci": {
-                            "reporters": [["html", { "outputFile": "reports/index.html" }], "dot", "github-actions"],
+                            "reporters": ["html", "dot", "github-actions"],
                             "ui": false,
                             "watch": false
                         }
