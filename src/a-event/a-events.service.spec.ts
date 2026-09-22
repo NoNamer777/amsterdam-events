@@ -1,38 +1,39 @@
+import { setupTestEnvironment } from '@/testing';
 import { TestBed } from '@angular/core/testing';
 import { AEvent } from './a-event.model';
 import { AEventsService } from './a-events.service';
 
 describe('AEventsService', () => {
-    function setupTest() {
-        TestBed.configureTestingModule({});
+    async function setupTest() {
+        await setupTestEnvironment();
 
         return {
             service: TestBed.inject(AEventsService),
         };
     }
 
-    it('should return all AEvents', () => {
-        const { service } = setupTest();
+    it('should return all AEvents', async () => {
+        const { service } = await setupTest();
 
         expect(service.getAll()).toHaveLength(10);
     });
 
-    it('should return an AEvent by ID', () => {
-        const { service } = setupTest();
+    it('should return an AEvent by ID', async () => {
+        const { service } = await setupTest();
 
         const event = service.getById(1);
         expect(event).toBeDefined();
         expect(event.id).toEqual(1);
     });
 
-    it('should throw an Error when AEvent is not found by ID', () => {
-        const { service } = setupTest();
+    it('should throw an Error when AEvent is not found by ID', async () => {
+        const { service } = await setupTest();
 
-        expect(() => service.getById(11)).toThrowError(`Event with id '11' does not exist`);
+        expect(() => service.getById(11)).toThrow(new Error(`Event with id '11' does not exist`));
     });
 
-    it('should add a new AEvent', () => {
-        const { service } = setupTest();
+    it('should add a new AEvent', async () => {
+        const { service } = await setupTest();
 
         expect(service.getAll()).toHaveLength(10);
 
@@ -40,11 +41,11 @@ describe('AEventsService', () => {
         service.add(newEvent);
 
         expect(service.getAll()).toHaveLength(11);
-        expect(() => service.getById(11)).not.toThrowError();
+        expect(() => service.getById(11)).not.toThrow();
     });
 
-    it('should update an AEvent', () => {
-        const { service } = setupTest();
+    it('should update an AEvent', async () => {
+        const { service } = await setupTest();
 
         const event = service.getById(1);
         const modifiedTitle = 'Modified title';
@@ -55,29 +56,29 @@ describe('AEventsService', () => {
         expect(service.getById(1).title).toEqual(modifiedTitle);
     });
 
-    it('should throw an error when updating an AEvent that does not exist', () => {
-        const { service } = setupTest();
+    it('should throw an error when updating an AEvent that does not exist', async () => {
+        const { service } = await setupTest();
 
         const event = new AEvent();
 
-        expect(() => service.update(11, event)).toThrowError(
-            `Can't update AEvent with ID: '11' because it has not been created yet`,
+        expect(() => service.update(11, event)).toThrow(
+            new Error(`Can't update AEvent with ID: '11' because it has not been created yet`),
         );
     });
 
-    it('should throw an error when updating an AEvent with data from another AEvent', () => {
-        const { service } = setupTest();
+    it('should throw an error when updating an AEvent with data from another AEvent', async () => {
+        const { service } = await setupTest();
 
         const event = service.getById(1);
         event.title = 'My new Event title';
 
-        expect(() => service.update(2, event)).toThrowError(
-            `Can't update AEvent with ID: '2' with data from AEvent with ID: '1'`,
+        expect(() => service.update(2, event)).toThrow(
+            new Error(`Can't update AEvent with ID: '2' with data from AEvent with ID: '1'`),
         );
     });
 
-    it('should remove an AEvent', () => {
-        const { service } = setupTest();
+    it('should remove an AEvent', async () => {
+        const { service } = await setupTest();
 
         const event = service.getById(1);
 
@@ -86,9 +87,9 @@ describe('AEventsService', () => {
         expect(service.getAll()).toHaveLength(9);
     });
 
-    it('should throw an error when removing an AEvent that does not exist.', () => {
-        const { service } = setupTest();
+    it('should throw an error when removing an AEvent that does not exist.', async () => {
+        const { service } = await setupTest();
 
-        expect(() => service.remove(11)).toThrowError(`Event with id '11' does not exist`);
+        expect(() => service.remove(11)).toThrow(new Error(`Event with id '11' does not exist`));
     });
 });

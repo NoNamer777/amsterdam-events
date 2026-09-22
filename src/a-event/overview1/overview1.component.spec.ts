@@ -1,8 +1,7 @@
 import { Overview1Component } from '@/a-event';
 import { EventsOverview1Harness } from '@/a-event/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { setupTestEnvironment } from '@/testing';
 import { Component } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
 
 describe('Overview1Component', () => {
     @Component({
@@ -11,27 +10,24 @@ describe('Overview1Component', () => {
     })
     class TestComponent {}
 
-    async function setupTestEnvironment() {
-        TestBed.configureTestingModule({
-            imports: [TestComponent],
+    async function setupTest() {
+        const { harness } = await setupTestEnvironment({
+            testComponent: TestComponent,
+            harness: EventsOverview1Harness,
         });
 
-        const harnessLoader = TestbedHarnessEnvironment.loader(TestBed.createComponent(TestComponent));
-
         return {
-            harness: await harnessLoader.getHarness(EventsOverview1Harness),
+            harness: harness,
         };
     }
 
     it('should show the events', async () => {
-        const { harness } = await setupTestEnvironment();
-
+        const { harness } = await setupTest();
         expect((await harness.getEventElements()).length).toEqual(10);
     });
 
     it('should add new event', async () => {
-        const { harness } = await setupTestEnvironment();
-
+        const { harness } = await setupTest();
         expect((await harness.getEventElements()).length).toEqual(10);
 
         await harness.fireAddEventButton();

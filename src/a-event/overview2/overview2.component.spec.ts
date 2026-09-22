@@ -1,8 +1,7 @@
 import { Overview2Component } from '@/a-event';
 import { EventsDetails2Harness, EventsOverview2Harness } from '@/a-event/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { setupTestEnvironment } from '@/testing';
 import { Component } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
 
 describe('Overview2Component', () => {
     @Component({
@@ -11,21 +10,20 @@ describe('Overview2Component', () => {
     })
     class TestComponent {}
 
-    async function setupTestEnvironment() {
-        TestBed.configureTestingModule({
-            imports: [TestComponent],
+    async function setupTest() {
+        const { harness, harnessLoader } = await setupTestEnvironment({
+            testComponent: TestComponent,
+            harness: EventsOverview2Harness,
         });
 
-        const harnessLoader = TestbedHarnessEnvironment.loader(TestBed.createComponent(TestComponent));
-
         return {
-            harness: await harnessLoader.getHarness(EventsOverview2Harness),
+            harness: harness,
             harnessLoader: harnessLoader,
         };
     }
 
     it('should show the events', async () => {
-        const { harness } = await setupTestEnvironment();
+        const { harness } = await setupTest();
 
         expect((await harness.getEventElements()).length).toEqual(10);
         expect(await harness.isEventDetailsPlaceholderVisible()).toEqual(true);
@@ -34,7 +32,7 @@ describe('Overview2Component', () => {
     });
 
     it('should set event by click action', async () => {
-        const { harness } = await setupTestEnvironment();
+        const { harness } = await setupTest();
 
         expect(await harness.hasEventSelected()).toEqual(false);
 
@@ -54,7 +52,7 @@ describe('Overview2Component', () => {
     });
 
     it('should show event details when event is selected', async () => {
-        const { harness } = await setupTestEnvironment();
+        const { harness } = await setupTest();
 
         expect(await harness.isEventDetailsPlaceholderVisible()).toEqual(true);
         expect(await harness.isEventDetailsVisible()).toEqual(false);
@@ -66,7 +64,7 @@ describe('Overview2Component', () => {
     });
 
     it('should add new event', async () => {
-        const { harness } = await setupTestEnvironment();
+        const { harness } = await setupTest();
 
         expect((await harness.getEventElements()).length).toEqual(10);
 
@@ -75,7 +73,7 @@ describe('Overview2Component', () => {
     });
 
     it('should save event changes', async () => {
-        const { harness, harnessLoader } = await setupTestEnvironment();
+        const { harness, harnessLoader } = await setupTest();
         const newEventTitle = 'my event title';
 
         await harness.selectEventByIndex(0);
@@ -96,7 +94,7 @@ describe('Overview2Component', () => {
     });
 
     it('should delete event', async () => {
-        const { harness, harnessLoader } = await setupTestEnvironment();
+        const { harness, harnessLoader } = await setupTest();
 
         await harness.selectEventByIndex(0);
 

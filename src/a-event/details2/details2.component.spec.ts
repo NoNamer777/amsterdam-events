@@ -1,7 +1,6 @@
 import { EventsDetails2Harness } from '@/a-event/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { setupTestEnvironment } from '@/testing';
 import { Component } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
 import { AEvent } from '../a-event.model';
 import { Details2Component } from './details2.component';
 
@@ -32,28 +31,26 @@ describe('Details2Component', () => {
         }
     }
 
-    async function setupTestEnvironment() {
-        TestBed.configureTestingModule({
-            imports: [Details2Component],
+    async function setupTest() {
+        const { harness, fixture } = await setupTestEnvironment({
+            testComponent: TestComponent,
+            harness: EventsDetails2Harness,
         });
 
-        const fixture = TestBed.createComponent(TestComponent);
-        const harnessLoader = TestbedHarnessEnvironment.loader(fixture);
-
         return {
-            harness: await harnessLoader.getHarness(EventsDetails2Harness),
+            harness: harness,
             component: fixture.componentInstance,
         };
     }
 
     it('should have event when loaded', async () => {
-        const { harness } = await setupTestEnvironment();
+        const { harness } = await setupTest();
 
         expect(await harness.getEventElement()).toEqual(true);
     });
 
     it('should fire save action', async () => {
-        const { harness, component } = await setupTestEnvironment();
+        const { harness, component } = await setupTest();
 
         expect(component.eventChangedEmits).toEqual(0);
 
@@ -63,7 +60,7 @@ describe('Details2Component', () => {
     });
 
     it('should fire delete action', async () => {
-        const { harness, component } = await setupTestEnvironment();
+        const { harness, component } = await setupTest();
 
         expect(component.eventDeletedEmits).toEqual(0);
 
