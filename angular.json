@@ -87,7 +87,7 @@
                         "include": ["**/*.spec.ts"],
                         "isolate": true,
                         "reporters": [["html", { "outputFile": "reports/index.html" }], "dot"],
-                        "runnerConfig": "vitest.config.mts",
+                        "runnerConfig": "vitest.config.ts",
                         "ui": true,
                         "watch": true
                     },
