@@ -18,7 +18,11 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "paths": {
-            "@amsterdam-events/test": ["./test/index.ts"]
+            "@/a-event": ["./src/a-event/index.ts"],
+            "@/a-event/testing": ["./src/a-event/testing/index.ts"],
+            "@/core": ["./src/core/index.ts"],
+            "@/core/testing": ["./src/core/testing/index.ts"],
+            "@/testing": ["./src/testing/index.ts"]
         },
         "sourceMap": true,
         "strictBindCallApply": true,
