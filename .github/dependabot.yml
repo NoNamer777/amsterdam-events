@@ -1,23 +1,23 @@
 version: 2
 updates:
-    - package-ecosystem: 'github-actions'
-      directory: '/'
+    - package-ecosystem: "github-actions"
+      directory: "/"
       schedule:
-          interval: 'daily'
+          interval: "daily"
 
       # One PR for all minor/patch action bumps; majors get their own PR each.
       groups:
           actions:
               patterns:
-                  - '*'
+                  - "*"
               update-types:
-                  - 'minor'
-                  - 'patch'
+                  - "minor"
+                  - "patch"
 
-    - package-ecosystem: 'npm'
-      directory: '/'
+    - package-ecosystem: "npm"
+      directory: "/"
       schedule:
-          interval: 'daily'
+          interval: "daily"
       open-pull-requests-limit: 20
 
       # Groups mirror the named catalogs in pnpm-workspace.yaml: a bump for a
@@ -29,24 +29,24 @@ updates:
           # catalog: angular (+ catalog: angular-cli)
           angular:
               patterns:
-                  - '@angular/*'
+                  - "@angular/*"
 
           # catalog: angular-eslint
           angular-eslint:
               patterns:
-                  - '@angular-eslint/*'
-                  - 'angular-eslint'
+                  - "@angular-eslint/*"
+                  - "angular-eslint"
 
           # catalog: vitest
           vitest:
               patterns:
-                  - '@vitest/*'
-                  - 'vitest'
+                  - "@vitest/*"
+                  - "vitest"
 
           # default catalog: everything not in a version-locked family
           default-catalog:
               patterns:
-                  - '*'
+                  - "*"
               update-types:
-                  - 'minor'
-                  - 'patch'
+                  - "minor"
+                  - "patch"

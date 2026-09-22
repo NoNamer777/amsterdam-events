@@ -1,10 +1,10 @@
-const eslint = require('@eslint/js');
-const { defineConfig } = require('eslint/config');
-const tseslint = require('typescript-eslint');
-const angular = require('angular-eslint');
-const eslintPrettierConfig = require('eslint-config-prettier');
+import eslint from '@eslint/js';
+import angular from 'angular-eslint';
+import eslintPrettierConfig from 'eslint-config-prettier';
+import { defineConfig } from 'eslint/config';
+import tseslint from 'typescript-eslint';
 
-module.exports = defineConfig([
+export default defineConfig([
     {
         files: ['**/*.ts'],
         extends: [

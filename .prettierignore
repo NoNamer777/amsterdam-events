@@ -1,40 +1,31 @@
-# Ignore all
 *
 
-# Except for directories
 !*/
 
-# and except for specific file types
 !*.json
 !*.yaml
 !*.yml
-!*.js
-!*.[cm]js
-!*.ts
-!*.[cm]ts
+!*.[cm][tj]s
+!*.[tj]s
 !*.html
 !*.scss
 !*.css
 
-!.prettierrc
-
-###
-
-reports/
-coverage/
 .vitest/
+coverage/
+
 .angular/
+dist/
 
-## IDE directories
 .idea/
-.vscode/
 
-## Imported source
+.vscode/*
+!.vscode/extension.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
 node_modules/
 pnpm-lock.yaml
 
-## Output directories
-dist/
 .Ds_Store
-
-## Specific files and directories
