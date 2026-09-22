@@ -8,10 +8,7 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "runtimeExecutable": "npm",
-            "runtimeArgs": [
-              "run-script",
-              "start:remote"
-            ],
+            "runtimeArgs": ["run-script", "start:remote"]
         }
     ]
 }
