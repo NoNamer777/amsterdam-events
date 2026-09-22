@@ -10,7 +10,7 @@ export const RANDOM_DATE_WINDOW_END = new Date(BASE_YEAR + MAX_YEAR_OFFSET, 0, 1
 
 function randomAEventStatus(): AEventStatus {
     const statuses = Object.values(AEventStatuses);
-    const rndNum = Math.floor(Math.random() * statuses.length - 1);
+    const rndNum = Math.floor(Math.random() * statuses.length);
 
     return statuses[rndNum]!;
 }
